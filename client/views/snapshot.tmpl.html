@@ -1,11 +1,11 @@
-<div flex layout="row">
+<div flex layout="row" style="background-color: #828282; color: white;">
 
-  <section flex class="md-padding" style="background-color: #929292; color: white;">
-
-    <div flex>
+  <section flex layout class="md-padding" style="background-color: #828282; color: white;">
+    <md-button ng-click="SS.toggleLeft()">Open Nav</md-button>
+    <div layout>
       <form name="daterange">
-        <div flex layout="row" class="md-padding">
-          <div flex class="">
+        <div flex layout="column" layout-gt-sm="row" layout-align="center end" class="md-padding" style="border: none;">
+          <div flex layout-align="center" style="border: none; margin: 1rem;">
             <label for="startdatefield">Beginning Date:</label>
             <md-datepicker id="startdatefield" name="startdatefield" ng-model="snapShotStart" md-placeholder=""
                            required
@@ -18,7 +18,8 @@
             </div>
           </div>
 
-          <div flex><label for="enddatefield">End Date:</label>
+          <div flex style="border: none; margin: 1rem;">
+            <label for="enddatefield">End Date:</label>
             <md-datepicker id="enddatefield" name="enddatefield" ng-model="snapShotEnd" md-placeholder=""
                            required
                            md-min-date="snapShotStart"

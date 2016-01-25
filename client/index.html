@@ -3,38 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <title>BGTrackv1.0.0</title>
-
+  <link rel="stylesheet" href="https://cdn.rawgit.com/novus/nvd3/v1.8.1/build/nv.d3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="vendor/jquery-timepicker-jt/jquery.timepicker.css">
   <link rel="stylesheet" href="vendor/angular-material/angular-material.min.css">
+  <link rel="stylesheet" href="vendor/angular-material/angular-material.layouts.min.css">
   <link rel="stylesheet" href="vendor/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="vendor/nvd3/build/nv.d3.min.css">
+
   <link rel="stylesheet" href="css/app.css">
 </head>
-<body ng-app="bgTrackApp" class="ng-cloak">
+<body ng-app="bgTrackApp"
+      class="ng-cloak {xs: $mdMedia('xs'), sm: $mdMedia('sm'), md: $mdMedia('md'), lg: $mdMedia('lg')}">
 
 <div layout="column">
   <div>
-    <md-toolbar class="md-padding">
+    <md-toolbar layout-gt-sm="column" layout-align-gt-sm="start" layout="column" layout-align="center center"
+                class="md-padding">
     <span>
       <md-icon md-svg-src="img/noun_42681_cc.svg"></md-icon>
       Blood Glucose Tracker </span>
     </md-toolbar>
   </div>
-  <nav layout layout-align="end">
+  <nav layout-gt-sm="row" layout-align-gt-sm="end" layout layout-align="center center">
     <!--<md-button class="md-fab " aria-label="glucose test entry" href="#/glucosetest">
       <md-icon md-svg-src="img/noun_188893_cc.svg" id="fabsvg"></md-icon>
     </md-button>
     <md-button class="md-fab" aria-label="log book entry">
       <i class="mdi mdi-36px mdi-plus"></i>
     </md-button>-->
+
     <md-button><i class="mdi mdi-plus-circle-outline"></i> Glucose Test</md-button>
     <md-button><i class="mdi mdi-plus-circle-outline"></i> Log Book</md-button>
   </nav>
-  <div layout="row">
+  <div layout="row" layout-gt-sm="row">
     <section>
-      <md-sidenav layout="column" md-is-locked-open="true" class="md-padding md-whiteframe-z2">
-
+      <md-sidenav class="md-sidenav-left md-whiteframe-z2 md-padding" md-component-id="left"
+                  md-is-locked-open="$mdMedia('gt-md')">
+        <md-button ng-click="SS.close()">Close</md-button>
         <div layout="column" layout-align="start">
           <header><h3>Weekly Average</h3></header>
           <section layout layout-align="end end" class="md-padding">
@@ -93,8 +98,9 @@
         </md-card>
       </md-sidenav>
     </section>
-    <div flex layout ui-view></div>
+    <div flex layout class="md-padding" ui-view></div>
   </div>
+
   <footer> BGTrack v1.0.0
 
   </footer>
@@ -123,5 +129,6 @@
 <script src="js/services/lb-service.js"></script>
 <script src="js/lodashFactory.js"></script>
 <script src="js/app.js"></script>
+<script src="js/controllers/snapshot.js"></script>
 </body>
 </html>

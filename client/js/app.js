@@ -15,9 +15,9 @@
       $stateProvider
         .state('snapshot', {
           url: '',
-          templateUrl: '../views/snapshot.tmpl.html'
-          /*controller: 'SnapShotCtrl',
-           controllerAs: 'SnapShot'*/
+          templateUrl: '../views/snapshot.tmpl.html',
+          controller: 'SnapShotCtrl',
+          controllerAs: 'SS'
         });
       /*.state('bloodglucose', {
        url: '/glucose',
