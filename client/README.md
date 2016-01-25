@@ -1,3 +1,3 @@
-## Client
+## Client - ANGULAR JS 
 
-This is the place for your application front-end files.
+AngularJS + Angular Material web application
