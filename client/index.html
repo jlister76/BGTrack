@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BGTrackv1.0.0</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="vendor/jquery-timepicker-jt/jquery.timepicker.css">
+  <link rel="stylesheet" href="vendor/angular-material/angular-material.min.css">
+  <link rel="stylesheet" href="vendor/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="vendor/nvd3/build/nv.d3.min.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body ng-app="bgTrackApp" class="ng-cloak">
+
+<div layout="column">
+  <div>
+    <md-toolbar class="md-padding">
+    <span>
+      <md-icon md-svg-src="img/noun_42681_cc.svg"></md-icon>
+      Blood Glucose Tracker </span>
+    </md-toolbar>
+  </div>
+  <nav layout layout-align="end">
+    <!--<md-button class="md-fab " aria-label="glucose test entry" href="#/glucosetest">
+      <md-icon md-svg-src="img/noun_188893_cc.svg" id="fabsvg"></md-icon>
+    </md-button>
+    <md-button class="md-fab" aria-label="log book entry">
+      <i class="mdi mdi-36px mdi-plus"></i>
+    </md-button>-->
+    <md-button><i class="mdi mdi-plus-circle-outline"></i> Glucose Test</md-button>
+    <md-button><i class="mdi mdi-plus-circle-outline"></i> Log Book</md-button>
+  </nav>
+  <div layout="row">
+    <section>
+      <md-sidenav layout="column" md-is-locked-open="true" class="md-padding md-whiteframe-z2">
+
+        <div layout="column" layout-align="start">
+          <header><h3>Weekly Average</h3></header>
+          <section layout layout-align="end end" class="md-padding">
+            <span class="md-title">102</span>
+            <div class="md-caption md-padding">ml/dL</div>
+          </section>
+          <hr/>
+        </div>
+        <div layout="column" layout-align="start">
+          <header><h3>Floating Fasting Average</h3></header>
+          <section layout layout-align="end end" class="md-padding">
+            <span class="md-title">102</span>
+            <div class="md-caption md-padding">ml/dL</div>
+          </section>
+          <hr/>
+        </div>
+
+        <div layout="column" layout-align="start">
+          <header><h3>Daily Carbs</h3></header>
+          <section layout layout-align="end end" class="md-padding">
+            <span class="md-title">36</span>
+            <div class="md-caption md-padding">grams/day</div>
+          </section>
+          <hr/>
+        </div>
+
+        <div layout="column" layout-align="start">
+          <header><h2 class="md-title">Insulin</h2></header>
+          <md-divider></md-divider>
+          <h3>Fast-Acting</h3>
+          <section layout layout-align="end end" class="md-padding">
+            <span class="md-title">14</span>
+            <div class="md-caption md-padding">grams/day</div>
+          </section>
+          <md-divider></md-divider>
+          <h3>Long-Lasting</h3>
+          <section layout layout-align="end end" class="md-padding">
+            <span class="md-title">24</span>
+            <div class="md-caption md-padding">grams/day</div>
+          </section>
+          <md-divider></md-divider>
+          <footer>Daily Total Insulin Units
+            <section layout layout-align="end end" class="md-padding">
+              <span class="md-title">38</span>
+              <div class="md-caption md-padding">grams/day</div>
+            </section>
+          </footer>
+        </div>
+        <hr/>
+        <header><h2>Comments</h2></header>
+        <md-card>
+          <md-card-content><p>Text inside the card</p></md-card-content>
+        </md-card>
+        <md-card>
+          <md-card-content><p>Text inside the card</p></md-card-content>
+        </md-card>
+      </md-sidenav>
+    </section>
+    <div flex layout ui-view></div>
+  </div>
+  <footer> BGTrack v1.0.0
+
+  </footer>
+</div>
+
+
+<script src="vendor/jquery/dist/jquery.min.js"></script>
+<script src="vendor/what-input/what-input.min.js"></script>
+<script src="vendor/angular/angular.min.js"></script>
+<script src="vendor/angular-resource/angular-resource.min.js"></script>
+<script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+<script src="vendor/angular-animate/angular-animate.min.js"></script>
+<script src="vendor/angular-aria/angular-aria.min.js"></script>
+<script src="vendor/angular-messages/angular-messages.min.js"></script>
+<script src="vendor/angular-material/angular-material.min.js"></script>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.0/lodash.min.js"></script>
+<script src="vendor/jquery-timepicker-jt/jquery.timepicker.min.js"></script>
+<script src="vendor/angular-jquery-timepicker/src/timepickerdirective.min.js"></script>
+<script src="vendor/d3/d3.min.js"></script>
+<script src="vendor/nvd3/build/nv.d3.min.js"></script>
+<script src="vendor/angular-nvd3/dist/angular-nvd3.min.js"></script>
+
+<script src="js/services/lb-service.js"></script>
+<script src="js/lodashFactory.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

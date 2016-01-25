@@ -1,0 +1,26 @@
+{
+  "name": "GlucoseTest",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "bloodGlucose": {
+      "type": "string",
+      "required": true
+    },
+    "testDateTime": {
+      "type": "date",
+      "required": true
+    },
+    "fasting": {
+      "type": "boolean",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

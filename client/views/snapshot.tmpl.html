@@ -1,0 +1,36 @@
+<div flex layout="row">
+
+  <section flex class="md-padding" style="background-color: #929292; color: white;">
+
+    <div flex>
+      <form name="daterange">
+        <div flex layout="row" class="md-padding">
+          <div flex class="">
+            <label for="startdatefield">Beginning Date:</label>
+            <md-datepicker id="startdatefield" name="startdatefield" ng-model="snapShotStart" md-placeholder=""
+                           required
+                           md-max-date="snapShotEnd"
+                           class=""></md-datepicker>
+            <div class="validation-messages" ng-messages="daterange.startdatefield.$error">
+              <div ng-message="valid">The entered value is not a date!</div>
+              <br/>
+              <div ng-message="required">A date is required!</div>
+            </div>
+          </div>
+
+          <div flex><label for="enddatefield">End Date:</label>
+            <md-datepicker id="enddatefield" name="enddatefield" ng-model="snapShotEnd" md-placeholder=""
+                           required
+                           md-min-date="snapShotStart"
+                           class=""></md-datepicker>
+            <div class="validation-messages" ng-messages="daterange.enddatefield.$error">
+              <div ng-message="valid">The entered value is not a date!</div>
+              <br/>
+              <div ng-message="required">A date is required!</div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</div>
