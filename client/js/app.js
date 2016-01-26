@@ -17,16 +17,22 @@
           url: '/',
           views: {
             '': {
-              templateUrl: '../views/content.tmpl.html',
+              templateUrl: '../views/content.tmpl.html'
             },
             'menu@home': {
-              templateUrl: '../views/tmpls/menu.html'
+              templateUrl: '../views/tmpls/menu.html',
+              controller: 'SnapShotCtrl',
+              controllerAs: 'SS'
             },
             'sidenav@home': {
-              templateUrl: '../views/tmpls/sidenav.html'
+              templateUrl: '../views/tmpls/sidenav.html',
+              controller: 'SnapShotCtrl',
+              controllerAs: 'SS'
             },
             'content@home': {
-              templateUrl: '../views/test2.html'
+              templateUrl: '../views/test2.html',
+              controller: 'SnapShotCtrl',
+              controllerAs: 'SS'
             },
             'footer@home': {
               templateUrl: '../views/tmpls/footer.html'
@@ -58,5 +64,12 @@
       /*$locationProvider.html5Mode({ enabled: true, requireBase: false });*/
       $urlRouterProvider.otherwise('/');
     }])
+    .config(function($mdThemingProvider){
+      $mdThemingProvider.theme('default')
+        .primaryPalette('blue')
+        .accentPalette('light-blue')
+        .dark()
+
+    });
 
 })();
