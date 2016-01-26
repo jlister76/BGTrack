@@ -7,7 +7,7 @@
   },
   "properties": {
     "bloodGlucose": {
-      "type": "string",
+      "type": "number",
       "required": true
     },
     "testDateTime": {
@@ -16,7 +16,7 @@
     },
     "fasting": {
       "type": "boolean",
-      "required": true
+      "required": false
     }
   },
   "validations": [],

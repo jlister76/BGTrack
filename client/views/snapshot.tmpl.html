@@ -1,11 +1,13 @@
-<div flex layout="row" style="background-color: #828282; color: white; height: 100vh;">
+<div layout="column" style="background-color: #fafafa; color: dimgrey; height: 100vh; ">
 
-  <section flex layout class="" style="background-color: #828282; color: white;">
-    <md-button ng-click="SS.toggleLeft()">Open Nav</md-button>
-    <div layout>
-      <form name="daterange">
-        <div flex layout="column" layout-gt-sm="row" layout-align="center end" class="md-padding" style="border: none;">
-          <div flex layout-align="center" style="border: none; margin: 1rem;">
+  <section layout="column" class="">
+
+    <div layout layout-align-gt-sm="space-around end">
+      <form name="daterange" flex layout-align-gt-sm="space-around end">
+        <div flex layout="column" layout-align="space-around center" layout-gt-sm="row"
+             class="md-padding">
+
+          <div layout="column" layout-align="center" style="border: none;margin: 1.5rem;">
             <label for="startdatefield">Beginning Date:</label>
             <md-datepicker id="startdatefield" name="startdatefield" ng-model="snapShotStart" md-placeholder=""
                            required
@@ -18,7 +20,7 @@
             </div>
           </div>
 
-          <div flex style="border: none; margin: 1rem;">
+          <div layout="column" layout-align="center" style="border: none; margin: 1.5rem;">
             <label for="enddatefield">End Date:</label>
             <md-datepicker id="enddatefield" name="enddatefield" ng-model="snapShotEnd" md-placeholder=""
                            required
@@ -30,8 +32,10 @@
               <div ng-message="required">A date is required!</div>
             </div>
           </div>
+
         </div>
       </form>
+
     </div>
   </section>
 </div>

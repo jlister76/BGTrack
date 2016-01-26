@@ -1,0 +1,54 @@
+<div><h2>Enter your glucose number</h2>
+
+  <form name="SS.glucoseTestForm" novalidate ng-submit="SS.addTestResults()" id="projectForm" class="">
+
+    <md-input-container><label for="result">Glucose Reading</label>
+      <input type="text" required id="result" name="result" ng-model="SS.newTestResult.bloodGlucose"
+             ng-minlength="2"
+             ng-maxlength="3" ng-pattern="/\d/" placeholder="e.g. 96"/>
+      <div ng-messages="SS.glucoseTestForm.result.$error">
+        <div ng-message="required">This is required.</div>
+        <div ng-message="maxlength">2 to 3 digit reading is required.</div>
+        <div ng-message="pattern">Glucose readings use numbers only.</div>
+
+      </div>
+    </md-input-container>
+    <br/>
+    <md-input-container>
+      <div layout="column" layout-wrap layout-gt-sm="row" class="">
+        <div flex-xs><br/>
+          <md-checkbox ng-model="SS.newTestResult.fasting" aria-label="is fasting" id="isFasting"
+                       class="">
+            <div>Check if fasting</div>
+          </md-checkbox>
+        </div>
+      </div>
+    </md-input-container>
+    <br/>
+
+
+    <div><label for="dateField">Select Date:</label>
+      <md-datepicker id="dateField" name="dateField" ng-model="SS.newTestResult.testDateTime" md-placeholder=""
+                     required class=""></md-datepicker>
+      <div class="" ng-messages="SS.glucoseTestForm.dateField.$error">
+        <div ng-message="valid">The entered value is not a date!</div>
+        <br/>
+        <div ng-message="required">A date is required!</div>
+      </div>
+    </div>
+
+
+    <div ng-model="SS.newTestResult.testDateTime" ui-timepicker>Click to change the time: {{
+      SS.newTestResult.testDateTime | date:'shortTime' }}
+    </div>
+
+
+    <div>{{SS.newTestResult.testDateTime | date:'medium'}}</div>
+
+
+    <md-button type="submit" class="md-raised md-accent" ng-disabled="SS.glucoseTestForm.$invalid">
+      Add Glucose Reading
+    </md-button>
+
+  </form>
+</div>

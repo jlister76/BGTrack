@@ -13,37 +13,17 @@
     ])
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
       $stateProvider
-        .state('home', {
-          url: '/',
-          views: {
-            '@': {
-              templateUrl: '../views/content.tmpl.html'
-            },
-            'menu@': {
-              templateUrl: '../views/tmpls/menu.html',
-              controller: 'SnapShotCtrl',
-              controllerAs: 'SS'
-            },
-            'sidenav@': {
-              templateUrl: '../views/tmpls/sidenav.html',
-              controller: 'SnapShotCtrl',
-              controllerAs: 'SS'
-            },
-            'footer@': {
-              templateUrl: '../views/tmpls/footer.html'
-            }
-          }
+        .state('main', {
+          url: '',
+          templateUrl: '../views/snapshot.tmpl.html',
+          controller: 'SnapShotCtrl',
+          controllerAs: 'SS'
         })
-        .state('home.snapshot', {
-          url: '/snapshot',
-          views: {
-            '^@home': {
-              templateUrl: '../views/snapshot.tmpl.html',
-              controller: 'SnapShotCtrl',
-              controllerAs: 'SS'
-            }
-          }
+        .state('add', {
+          url: '/add',
+          templateUrl: '../views/form.tmpl.html'
         });
+
       /*.state('bloodglucose', {
        url: '/glucose',
        templateUrl: '../views/bloodglucose.tmpl.html',
@@ -63,7 +43,7 @@
       $mdThemingProvider.theme('default')
         .primaryPalette('blue')
         .accentPalette('light-blue')
-        .dark()
+
 
     });
 
