@@ -15,96 +15,11 @@
 <body ng-app="bgTrackApp"
       class="ng-cloak {xs: $mdMedia('xs'), sm: $mdMedia('sm'), md: $mdMedia('md'), lg: $mdMedia('lg')}">
 
-<div layout="column">
-  <div>
-    <md-toolbar layout-gt-sm="column" layout-align-gt-sm="start" layout="column" layout-align="center center"
-                class="md-padding">
-    <span>
-      <md-icon md-svg-src="img/noun_42681_cc.svg"></md-icon>
-      Blood Glucose Tracker </span>
-    </md-toolbar>
-  </div>
-  <nav layout-gt-sm="row" layout-align-gt-sm="end" layout layout-align="center center">
-    <!--<md-button class="md-fab " aria-label="glucose test entry" href="#/glucosetest">
-      <md-icon md-svg-src="img/noun_188893_cc.svg" id="fabsvg"></md-icon>
-    </md-button>
-    <md-button class="md-fab" aria-label="log book entry">
-      <i class="mdi mdi-36px mdi-plus"></i>
-    </md-button>-->
+<div flex layout style="border: solid thin blue;" ui-view></div>
 
-    <md-button><i class="mdi mdi-plus-circle-outline"></i> Glucose Test</md-button>
-    <md-button><i class="mdi mdi-plus-circle-outline"></i> Log Book</md-button>
-  </nav>
-  <div layout="row" layout-gt-sm="row">
-    <section>
-      <md-sidenav class="md-sidenav-left md-whiteframe-z2 md-padding" md-component-id="left"
-                  md-is-locked-open="$mdMedia('gt-md')">
-        <md-button ng-click="SS.close()">Close</md-button>
-        <div layout="column" layout-align="start">
-          <header><h3>Weekly Average</h3></header>
-          <section layout layout-align="end end" class="md-padding">
-            <span class="md-title">102</span>
-            <div class="md-caption md-padding">ml/dL</div>
-          </section>
-          <hr/>
-        </div>
-        <div layout="column" layout-align="start">
-          <header><h3>Floating Fasting Average</h3></header>
-          <section layout layout-align="end end" class="md-padding">
-            <span class="md-title">102</span>
-            <div class="md-caption md-padding">ml/dL</div>
-          </section>
-          <hr/>
-        </div>
 
-        <div layout="column" layout-align="start">
-          <header><h3>Daily Carbs</h3></header>
-          <section layout layout-align="end end" class="md-padding">
-            <span class="md-title">36</span>
-            <div class="md-caption md-padding">grams/day</div>
-          </section>
-          <hr/>
-        </div>
+<!-- <div flex layout class="md-padding" ui-view></div>-->
 
-        <div layout="column" layout-align="start">
-          <header><h2 class="md-title">Insulin</h2></header>
-          <md-divider></md-divider>
-          <h3>Fast-Acting</h3>
-          <section layout layout-align="end end" class="md-padding">
-            <span class="md-title">14</span>
-            <div class="md-caption md-padding">grams/day</div>
-          </section>
-          <md-divider></md-divider>
-          <h3>Long-Lasting</h3>
-          <section layout layout-align="end end" class="md-padding">
-            <span class="md-title">24</span>
-            <div class="md-caption md-padding">grams/day</div>
-          </section>
-          <md-divider></md-divider>
-          <footer>Daily Total Insulin Units
-            <section layout layout-align="end end" class="md-padding">
-              <span class="md-title">38</span>
-              <div class="md-caption md-padding">grams/day</div>
-            </section>
-          </footer>
-        </div>
-        <hr/>
-        <header><h2>Comments</h2></header>
-        <md-card>
-          <md-card-content><p>Text inside the card</p></md-card-content>
-        </md-card>
-        <md-card>
-          <md-card-content><p>Text inside the card</p></md-card-content>
-        </md-card>
-      </md-sidenav>
-    </section>
-    <div flex layout class="md-padding" ui-view></div>
-  </div>
-
-  <footer> BGTrack v1.0.0
-
-  </footer>
-</div>
 
 
 <script src="vendor/jquery/dist/jquery.min.js"></script>
