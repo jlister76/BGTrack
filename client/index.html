@@ -15,8 +15,16 @@
 <body ng-app="bgTrackApp"
       class="ng-cloak {xs: $mdMedia('xs'), sm: $mdMedia('sm'), md: $mdMedia('md'), lg: $mdMedia('lg')}">
 
-<div flex layout ui-view></div>
+<div layout=""><div ui-view="sidenav"></div>
+<div flex layout="column">
+  <div layout=column ui-view="menu">
 
+  </div>
+
+  <div flex ui-view></div>
+  <div ui-view="footer"></div>
+</div>
+</div>
 
 <!-- <div flex layout class="md-padding" ui-view></div>-->
 

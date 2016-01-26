@@ -16,33 +16,28 @@
         .state('home', {
           url: '/',
           views: {
-            '': {
+            '@': {
               templateUrl: '../views/content.tmpl.html'
             },
-            'menu@home': {
+            'menu@': {
               templateUrl: '../views/tmpls/menu.html',
               controller: 'SnapShotCtrl',
               controllerAs: 'SS'
             },
-            'sidenav@home': {
+            'sidenav@': {
               templateUrl: '../views/tmpls/sidenav.html',
               controller: 'SnapShotCtrl',
               controllerAs: 'SS'
             },
-            'content@home': {
-              templateUrl: '../views/test2.html',
-              controller: 'SnapShotCtrl',
-              controllerAs: 'SS'
-            },
-            'footer@home': {
+            'footer@': {
               templateUrl: '../views/tmpls/footer.html'
             }
           }
         })
         .state('home.snapshot', {
-          url: '',
+          url: '/snapshot',
           views: {
-            'content@': {
+            '^@home': {
               templateUrl: '../views/snapshot.tmpl.html',
               controller: 'SnapShotCtrl',
               controllerAs: 'SS'
