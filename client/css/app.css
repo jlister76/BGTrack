@@ -7,6 +7,10 @@
   display: none !important;
 }
 
+md-toast {
+  padding: 1rem;
+}
+
 /*@media only screen and ()
 xs	'(max-width: 599px)'
 gt-xs	'(min-width: 600px)'
