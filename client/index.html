@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BGTrackv1.0.0</title>
   <link rel="stylesheet" href="https://cdn.rawgit.com/novus/nvd3/v1.8.1/build/nv.d3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -11,112 +13,117 @@
   <link rel="stylesheet" href="vendor/mdi/css/materialdesignicons.min.css">
 
   <link rel="stylesheet" href="css/app.css">
+
+  <style type="text/css">
+    /**
+     * Hide when Angular is not yet loaded and initialized
+     */
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+      display: none !important;
+    }
+  </style>
 </head>
-<body layout ng-app="bgTrackApp" ng-controller="SnapShotCtrl as SS"
-      class="ng-cloak {xs: $mdMedia('xs'), sm: $mdMedia('sm'), md: $mdMedia('md'), lg: $mdMedia('lg')}">
-<!--sidenav-->
-<div>
-  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left"
-              md-is-locked-open="$mdMedia('gt-sm')">
-    <md-toolbar layout="column" layout-align="start end" class="md-hue-2">
-      <div>
-        <md-icon hide-gt-sm ng-click="SS.close()"><i class="mdi mdi-close"></i></md-icon>
-      </div>
-    </md-toolbar>
-
-    <div layout="column" layout-align="start">
-      <header><h3>Weekly Average</h3></header>
-      <section layout layout-align="end end" class="md-padding">
-        <span class="md-title">102</span>
-        <div class="md-caption md-padding">ml/dL</div>
-      </section>
-      <!--<hr/>-->
-    </div>
-    <div layout="column" layout-align="start">
-      <header><h3>Floating Fasting Average</h3></header>
-      <section layout layout-align="end end" class="md-padding">
-        <span class="md-title">102</span>
-        <div class="md-caption md-padding">ml/dL</div>
-      </section>
-      <!--<hr/>-->
-    </div>
-
-    <div layout="column" layout-align="start">
-      <header><h3>Daily Carbs</h3></header>
-      <section layout layout-align="end end" class="md-padding">
-        <span class="md-title">36</span>
-        <div class="md-caption md-padding">grams/day</div>
-      </section>
-      <!-- <hr/>-->
-    </div>
-
-    <div layout="column" layout-align="start">
-      <header><h2 class="md-title">Insulin</h2></header>
-      <md-divider></md-divider>
-      <h3>Fast-Acting</h3>
-      <section layout layout-align="end end" class="md-padding">
-        <span class="md-title">14</span>
-        <div class="md-caption md-padding">grams/day</div>
-      </section>
-      <md-divider></md-divider>
-      <h3>Long-Lasting</h3>
-      <section layout layout-align="end end" class="md-padding">
-        <span class="md-title">24</span>
-        <div class="md-caption md-padding">grams/day</div>
-      </section>
-      <md-divider></md-divider>
-      <footer>Daily Total Insulin Units
-        <section layout layout-align="end end" class="md-padding">
-          <span class="md-title">38</span>
-          <div class="md-caption md-padding">grams/day</div>
-        </section>
-      </footer>
-    </div>
-    <hr/>
-    <header><h2>Comments</h2></header>
-    <md-card>
-      <md-card-content><p>Text inside the card</p></md-card-content>
-    </md-card>
-    <md-card>
-      <md-card-content><p>Text inside the card</p></md-card-content>
-    </md-card>
-
-  </md-sidenav>
-</div>
-<!--sidenav-->
 
 
-<div flex layout="column">
-  <div layout=column>
-    <!---header w/ nav -->
-    <div layout-gt-sm="row" layout-align-gt-sm="start">
-      <md-toolbar flex layout="column" layout-align="center center" class="md-padding md-hue-2">
+<body layout="column" ng-app="bgTrackApp" ng-controller="SnapShotCtrl as SS"
+      class="ng-cloak {xs: $mdMedia('xs'), sm: $mdMedia('sm'), md: $mdMedia('md'), lg: $mdMedia('lg')}"
+      style="display: flex; min-height: 100%; height: 100%;">
+<md-toolbar layout="row" layout-align="center center" class="md-padding md-hue-2">
     <span>
       <md-icon md-svg-src="img/noun_42681_cc.svg"></md-icon>
       Blood Glucose Tracker </span>
+</md-toolbar>
+
+<div layout style="border:none;">
+  <!--sidenav-->
+  <div layout="column" style="height: 100%; border:none;">
+    <md-sidenav class="md-sidenav-left" md-component-id="left"
+                md-is-locked-open="$mdMedia('gt-sm')">
+      <md-toolbar layout="column" layout-align="start end" hide-gt-sm class="md-hue-2">
+        <div>
+          <md-icon hide-gt-sm ng-click="SS.close()"><i class="mdi mdi-close"></i></md-icon>
+        </div>
       </md-toolbar>
 
-    </div>
-    <nav layout-gt-sm="row" layout-align-gt-sm="end" layout layout-align="center center">
+      <div layout="column" layout-align="start">
+        <header><h3>Weekly Average</h3></header>
+        <section layout layout-align="end end" class="md-padding">
+          <span class="md-title">{{SS.daily7 | number:0}}</span>
+          <div class="md-caption md-padding">ml/dL</div>
+        </section>
+        <md-divider></md-divider>
+      </div>
+      <div layout="column" layout-align="start">
+        <header><h3>Floating Fasting Average</h3></header>
+        <section layout layout-align="end end" class="md-padding">
+          <span class="md-title">{{SS.fastingAvg | number:0}}</span>
+          <div class="md-caption md-padding">ml/dL</div>
+        </section>
+        <md-divider></md-divider>
+      </div>
+
+      <div layout="column" layout-align="start">
+        <header><h3>Daily Carbs</h3></header>
+        <section layout layout-align="end end" class="md-padding">
+          <span class="md-title">36</span>
+          <div class="md-caption md-padding">grams/day</div>
+        </section>
+        <md-divider></md-divider>
+      </div>
+
+      <div layout="column" layout-align="start">
+        <header><h2 class="md-title">Insulin</h2></header>
+        <hr/>
+        <h3>Fast-Acting</h3>
+        <section layout layout-align="end end" class="md-padding">
+          <span class="md-title">14</span>
+          <div class="md-caption md-padding">grams/day</div>
+        </section>
+        <md-divider></md-divider>
+        <h3>Long-Lasting</h3>
+        <section layout layout-align="end end" class="md-padding">
+          <span class="md-title">24</span>
+          <div class="md-caption md-padding">grams/day</div>
+        </section>
+        <md-divider></md-divider>
+        <footer>Daily Total Insulin Units
+          <section layout layout-align="end end" class="md-padding">
+            <span class="md-title">38</span>
+            <div class="md-caption md-padding">grams/day</div>
+          </section>
+        </footer>
+      </div>
+      <hr/>
+      <header><h2>Comments</h2></header>
+      <md-card>
+        <md-card-content><p>Text inside the card</p></md-card-content>
+      </md-card>
+      <md-card>
+        <md-card-content><p>Text inside the card</p></md-card-content>
+      </md-card>
+
+    </md-sidenav>
+  </div>
+  <!--sidenav-->
+  <div flex layout="column">
+    <nav layout-gt-sm="row" layout-align-gt-sm="end" layout layout-align="center center" style="border: none">
 
       <md-button layout-align="start" hide-gt-sm ng-click="SS.toggleLeft()">Open Nav</md-button>
       <md-button ui-sref="add"><i class="mdi mdi-plus-circle-outline"></i> Glucose Test</md-button>
       <md-button><i class="mdi mdi-plus-circle-outline"></i> Log Book</md-button>
     </nav>
-
-    <!---header w/ nav -->
+    <div flex layout="column" ui-view style="border: none"></div>
   </div>
 
-  <div flex ui-view></div>
-  <!-- footer -->
-  <footer>
-    <div layout layout-align="center center">
-      BGTrack v1.0.0
-    </div>
-  </footer>
-  <!-- footer -->
-</div>
 
+</div>
+<!-- footer -->
+<footer layout="column">
+  <div layout layout-align="center center">
+    BGTrack v1.0.0
+  </div>
+</footer>
+<!-- footer -->
 
 <!-- <div flex layout class="md-padding" ui-view></div>-->
 

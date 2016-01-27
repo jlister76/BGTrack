@@ -20,3 +20,11 @@ xl	'(min-width: 1920px)'
 
 $mdMedia('min-width: 959px')
 */
+hr {
+  border: 0;
+  clear: both;
+  display: block;
+  width: 96%;
+  background-color: darkgray;
+  height: 1px;
+}
