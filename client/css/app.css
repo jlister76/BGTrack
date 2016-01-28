@@ -7,6 +7,10 @@
   display: none !important;
 }
 
+md-toast {
+  padding: 1rem;
+}
+
 /*@media only screen and ()
 xs	'(max-width: 599px)'
 gt-xs	'(min-width: 600px)'
@@ -27,4 +31,8 @@ hr {
   width: 96%;
   background-color: darkgray;
   height: 1px;
+}
+
+.closebox:hover {
+  background-color: #d60000;
 }

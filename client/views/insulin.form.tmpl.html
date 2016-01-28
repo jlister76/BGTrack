@@ -1,0 +1,58 @@
+<div flex md-theme="docs-dark" layout="column" class="md-padding"
+     style="background-color: #fafafa; color: dimgrey; border:none;  ">
+  <div layout="column" class="md-padding md-whiteframe-z2" style="margin: 2rem; min-width: 360px"><h2>Insulin
+    Control</h2>
+
+    <form name="SS.insulinControlForm" novalidate ng-submit="SS.addNewInjection()" id="projectForm" class="md-padding">
+      <md-input-container><label for="units">Number of units</label>
+        <input type="text" required id="units" name="unit" ng-model="SS.newInjection.units"
+               ng-minlength="1"
+               ng-maxlength="3" ng-pattern="/\d/" placeholder="e.g. 10"/>
+        <div ng-messages="SS.insulinControlForm.unit.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="maxlength">Units range from 0-100</div>
+          <div ng-message="pattern">Number of units must be a numeric value.</div>
+
+        </div>
+      </md-input-container>
+      <br/>
+      <md-input-container>
+        <div layout="column" layout-wrap layout-gt-sm="row" class="">
+          <div><br/>
+            <md-checkbox ng-model="SS.newinjection.fastActing" aria-label="fasting acting insulin type" id="fastactinng"
+                         class="">
+              <div>Fast Acting</div>
+            </md-checkbox>
+          </div>
+        </div>
+      </md-input-container>
+
+
+      <div>
+        <md-datepicker id="dateField" name="dateField" ng-model="SS.newInjection.injectionDateTime" md-placeholder=""
+                       required class=""></md-datepicker>
+        <div class="" ng-messages="SS.insulinControlForm.dateField.$error">
+          <div ng-message="valid">The entered value is not a date!</div>
+          <br/>
+          <div ng-message="required">A date is required!</div>
+        </div>
+      </div>
+
+
+      <div ng-model="SS.newInjection.injectionDateTime" ui-timepicker>Click to change the time: {{
+        SS.newInjection.injectionDateTime | date:'shortTime' }}
+      </div>
+      <br/>
+
+
+      <div>{{SS.newInjection.injectionDateTime | date:'medium'}}</div>
+
+
+      <md-button type="submit" class="md-raised md-accent" ng-disabled="SS.insulinControlForm.$invalid"
+                 style="margin: 2rem 0;">
+        Save
+      </md-button>
+
+    </form>
+  </div>
+</div>

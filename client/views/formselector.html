@@ -1,0 +1,37 @@
+<div class="md-padding" style="background-color: #fafafa; color: dimgrey; border:none;  ">
+  <md-content>
+    <h2>What information would you like to save? </h2>
+    <p class="md-caption">
+      (Please select one of the following)
+    </p>
+  </md-content>
+  <md-list>
+    <md-button ui-sref="selector.glucose-test">
+      <md-list-item>
+        <h3>
+          <md-icon md-svg-src="img/noun_188893_cc.svg" style="transform: scale(3);"></md-icon>
+          &nbsp; Glucose Test
+        </h3>
+      </md-list-item>
+    </md-button>
+    <md-divider></md-divider>
+    <md-button ui-sref="selector.new-insulin-injection">
+      <md-list-item>
+        <h3>
+          <md-icon md-svg-src="img/insulininj.svg" style="transform: scale(1.5);"></md-icon>
+          &nbsp; Insulin Injection
+        </h3>
+      </md-list-item>
+    </md-button>
+    <md-divider></md-divider>
+    <md-button ui-sref="selector.new-meal">
+      <md-list-item>
+        <h3>
+          <md-icon md-svg-src="img/food.svg" style="transform: scale(1.5);"></md-icon>
+          &nbsp; Meals
+        </h3>
+      </md-list-item>
+    </md-button>
+  </md-list>
+</div>
+<div ui-view></div>

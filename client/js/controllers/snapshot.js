@@ -2,7 +2,7 @@
   'use strict';
   angular
     .module('bgTrackApp')
-    .controller('SnapShotCtrl', ['$mdMedia', '$mdSidenav', '$log', 'GlucoseTest', '_', '$mdToast', function ($mdMedia, $mdSidenav, $log, GlucoseTest, _, $mdToast) {
+    .controller('SnapShotCtrl', ['$mdMedia', '$mdSidenav', '$log', 'GlucoseTest', '_', '$mdToast', 'InsulinInjection', 'Meal', function ($mdMedia, $mdSidenav, $log, GlucoseTest, _, $mdToast, InsulinInjection, Meal) {
       var vm = this;
       vm.greet = 'Hello';
       vm.$mdMedia = $mdMedia;
@@ -49,12 +49,33 @@
             vm.newTestResult = '';
             vm.glucoseTestForm.result.$setPristine();
             $('.focus').focus()
-          }), function (error) {
-          consoloe.error('Error. Unable to save your information.' + error);
-        }
+          })
 
-      }
+      };
+      vm.addNewInjection = function () {
+        InsulinInjection
+          .create(vm.newInjection)
+          .$promise
+          .then(showCustomToast())
+          .then(function (injection) {
+            vm.newInjection = '';
+            vm.insulinControlForm.unit.$setPristine();
+            $('.focus').focus()
+          })
 
+      };
+      vm.addNewMeal = function () {
+        Meal
+          .create(vm.newMeal)
+          .$promise
+          .then(showCustomToast())
+          .then(function (meal) {
+            vm.newMeal = '';
+            vm.meallogForm.description.$setPristine();
+            $('.focus').focus()
+          })
+
+      };
 
       vm.glucoseCalculations = function () {
         GlucoseTest

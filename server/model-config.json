@@ -36,11 +36,11 @@
     "dataSource": "mongodb",
     "public": true
   },
-  "Insulin": {
+  "Meal": {
     "dataSource": "mongodb",
     "public": true
   },
-  "Meals": {
+  "InsulinInjection": {
     "dataSource": "mongodb",
     "public": true
   }

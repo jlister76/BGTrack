@@ -30,7 +30,7 @@
       style="display: flex; min-height: 100%; height: 100%;">
 <md-toolbar layout="row" layout-align="center center" class="md-padding md-hue-2">
     <span>
-      <md-icon md-svg-src="img/noun_42681_cc.svg"></md-icon>
+      <md-icon md-svg-src="img/noun_42681_cc.svg" style="color: cornflowerblue"></md-icon>
       Blood Glucose Tracker </span>
 </md-toolbar>
 
@@ -40,7 +40,7 @@
     <md-sidenav class="md-sidenav-left" md-component-id="left"
                 md-is-locked-open="$mdMedia('gt-sm')">
       <md-toolbar layout="column" layout-align="start end" hide-gt-sm class="md-hue-2">
-        <div>
+        <div layout-align="center center" class="md-padding closebox">
           <md-icon hide-gt-sm ng-click="SS.close()"><i class="mdi mdi-close"></i></md-icon>
         </div>
       </md-toolbar>
@@ -109,8 +109,8 @@
     <nav layout-gt-sm="row" layout-align-gt-sm="end" layout layout-align="center center" style="border: none">
 
       <md-button layout-align="start" hide-gt-sm ng-click="SS.toggleLeft()">Open Nav</md-button>
-      <md-button ui-sref="add"><i class="mdi mdi-plus-circle-outline"></i> Glucose Test</md-button>
-      <md-button><i class="mdi mdi-plus-circle-outline"></i> Log Book</md-button>
+      <md-button ui-sref="glucose-test">Glucose Test</md-button>
+      <md-button ui-sref="selector"><i class="mdi mdi-plus-circle-outline"></i>Log Book</md-button>
     </nav>
     <div flex layout="column" ui-view style="border: none"></div>
   </div>

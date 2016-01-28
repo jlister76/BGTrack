@@ -13,29 +13,37 @@
     ])
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
       $stateProvider
-        .state('main', {
+        .state('/', {
           url: '',
           templateUrl: '../views/snapshot.tmpl.html',
           controller: 'SnapShotCtrl',
           controllerAs: 'SS'
         })
-        .state('add', {
-          url: '/add',
-          templateUrl: '../views/form.tmpl.html'
+        .state('selector', {
+          url: '/form/select',
+          templateUrl: '../views/formselector.html',
+          controller: 'SnapShotCtrl',
+          controllerAs: 'SS'
+        })
+        .state('selector.glucose-test', {
+          url: '/new/glucose-test',
+          templateUrl: '../views/form.tmpl.html',
+          controller: 'SnapShotCtrl',
+          controllerAs: 'SS'
+        })
+        .state('selector.new-insulin-injection', {
+          url: '/new/insulin-injection',
+          templateUrl: '../views/insulin.form.tmpl.html',
+          controller: 'SnapShotCtrl',
+          controllerAs: 'SS'
+        })
+        .state('selector.new-meal', {
+          url: '/new/meal',
+          templateUrl: '../views/meallog.form.tmpl.html',
+          controller: 'SnapShotCtrl',
+          controllerAs: 'SS'
         });
 
-      /*.state('bloodglucose', {
-       url: '/glucose',
-       templateUrl: '../views/bloodglucose.tmpl.html',
-       controller: 'BloodGlucoseCtrl',
-       controllerAs: 'BG'
-       })
-       .state('bloodglucoseform', {
-       url: '/glucosetest',
-       templateUrl: '../views/glucoseform.tmpl.html',
-       controller: 'BloodGlucoseCtrl',
-       controllerAs: 'BG'
-       });*/
       /*$locationProvider.html5Mode({ enabled: true, requireBase: false });*/
       $urlRouterProvider.otherwise('/');
     }])

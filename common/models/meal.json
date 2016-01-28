@@ -1,21 +1,21 @@
 {
-  "name": "Meals",
+  "name": "Meal",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "mealDateTime": {
-      "type": "date",
-      "required": true
-    },
     "description": {
       "type": "string",
       "required": true
     },
     "carbCount": {
       "type": "number",
+      "required": true
+    },
+    "mealDateTime": {
+      "type": "date",
       "required": true
     },
     "ingredients": {

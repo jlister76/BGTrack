@@ -1,19 +1,17 @@
 {
-  "name": "Insulin",
-  "plural": "InsulinInjections",
+  "name": "InsulinInjection",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "type": {
-      "type": "string",
-      "required": true
-    },
     "injectionDateTime": {
       "type": "date",
       "required": true
+    },
+    "fastActing": {
+      "type": "boolean"
     },
     "units": {
       "type": "number",

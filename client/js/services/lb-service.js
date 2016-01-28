@@ -74,7 +74,7 @@
           "prototype$__findById__accessTokens": {
             params: {
               'fk': '@fk'
-            },
+          },
             url: urlBase + "/Users/:id/accessTokens/:fk",
             method: "GET"
           },
@@ -109,7 +109,7 @@
           "prototype$__destroyById__accessTokens": {
             params: {
               'fk': '@fk'
-            },
+          },
             url: urlBase + "/Users/:id/accessTokens/:fk",
             method: "DELETE"
           },
@@ -151,7 +151,7 @@
           "prototype$__updateById__accessTokens": {
             params: {
               'fk': '@fk'
-            },
+          },
             url: urlBase + "/Users/:id/accessTokens/:fk",
             method: "PUT"
           },
@@ -757,7 +757,7 @@
           "login": {
             params: {
               include: "user"
-            },
+          },
             interceptor: {
               response: function (response) {
                 var accessToken = response.data;
@@ -766,7 +766,7 @@
                 LoopBackAuth.save();
                 return response.resource;
               }
-            },
+          },
             url: urlBase + "/Users/login",
             method: "POST"
           },
@@ -808,7 +808,7 @@
                 LoopBackAuth.clearStorage();
                 return response.resource;
               }
-            },
+          },
             url: urlBase + "/Users/logout",
             method: "POST"
           },
@@ -1699,13 +1699,13 @@
 
   /**
    * @ngdoc object
-   * @name lbServices.Insulin
-   * @header lbServices.Insulin
+   * @name lbServices.Meal
+   * @header lbServices.Meal
    * @object
    *
    * @description
    *
-   * A $resource object for interacting with the `Insulin` model.
+   * A $resource object for interacting with the `Meal` model.
    *
    * ## Example
    *
@@ -1715,598 +1715,7 @@
    *
    */
   module.factory(
-    "Insulin",
-    ['LoopBackResource', 'LoopBackAuth', '$injector', function (Resource, LoopBackAuth, $injector) {
-      var R = Resource(
-        urlBase + "/InsulinInjections/:id",
-        {'id': '@id'},
-        {
-
-          /**
-           * @ngdoc method
-           * @name lbServices.Insulin#create
-           * @methodOf lbServices.Insulin
-           *
-           * @description
-           *
-           * Create a new instance of the model and persist it into the data source.
-           *
-           * @param {Object=} parameters Request parameters.
-           *
-           *   This method does not accept any parameters.
-           *   Supply an empty object or omit this argument altogether.
-           *
-           * @param {Object} postData Request data.
-           *
-           * This method expects a subset of model properties as request parameters.
-           *
-           * @param {function(Object,Object)=} successCb
-           *   Success callback with two arguments: `value`, `responseHeaders`.
-           *
-           * @param {function(Object)=} errorCb Error callback with one argument:
-           *   `httpResponse`.
-           *
-           * @returns {Object} An empty reference that will be
-           *   populated with the actual data once the response is returned
-           *   from the server.
-           *
-           * <em>
-           * (The remote method definition does not provide any description.
-           * This usually means the response is a `Insulin` object.)
-           * </em>
-           */
-          "create": {
-            url: urlBase + "/InsulinInjections",
-            method: "POST"
-          },
-
-          /**
-           * @ngdoc method
-           * @name lbServices.Insulin#createMany
-           * @methodOf lbServices.Insulin
-           *
-           * @description
-           *
-           * Create a new instance of the model and persist it into the data source.
-           *
-           * @param {Object=} parameters Request parameters.
-           *
-           *   This method does not accept any parameters.
-           *   Supply an empty object or omit this argument altogether.
-           *
-           * @param {Object} postData Request data.
-           *
-           * This method expects a subset of model properties as request parameters.
-           *
-           * @param {function(Array.<Object>,Object)=} successCb
-           *   Success callback with two arguments: `value`, `responseHeaders`.
-           *
-           * @param {function(Object)=} errorCb Error callback with one argument:
-           *   `httpResponse`.
-           *
-           * @returns {Array.<Object>} An empty reference that will be
-           *   populated with the actual data once the response is returned
-           *   from the server.
-           *
-           * <em>
-           * (The remote method definition does not provide any description.
-           * This usually means the response is a `Insulin` object.)
-           * </em>
-           */
-          "createMany": {
-            isArray: true,
-            url: urlBase + "/InsulinInjections",
-            method: "POST"
-          },
-
-          /**
-           * @ngdoc method
-           * @name lbServices.Insulin#upsert
-           * @methodOf lbServices.Insulin
-           *
-           * @description
-           *
-           * Update an existing model instance or insert a new one into the data source.
-           *
-           * @param {Object=} parameters Request parameters.
-           *
-           *   This method does not accept any parameters.
-           *   Supply an empty object or omit this argument altogether.
-           *
-           * @param {Object} postData Request data.
-           *
-           * This method expects a subset of model properties as request parameters.
-           *
-           * @param {function(Object,Object)=} successCb
-           *   Success callback with two arguments: `value`, `responseHeaders`.
-           *
-           * @param {function(Object)=} errorCb Error callback with one argument:
-           *   `httpResponse`.
-           *
-           * @returns {Object} An empty reference that will be
-           *   populated with the actual data once the response is returned
-           *   from the server.
-           *
-           * <em>
-           * (The remote method definition does not provide any description.
-           * This usually means the response is a `Insulin` object.)
-           * </em>
-           */
-          "upsert": {
-            url: urlBase + "/InsulinInjections",
-            method: "PUT"
-          },
-
-          /**
-           * @ngdoc method
-           * @name lbServices.Insulin#exists
-           * @methodOf lbServices.Insulin
-           *
-           * @description
-           *
-           * Check whether a model instance exists in the data source.
-           *
-           * @param {Object=} parameters Request parameters.
-           *
-           *  - `id` – `{*}` - Model id
-           *
-           * @param {function(Object,Object)=} successCb
-           *   Success callback with two arguments: `value`, `responseHeaders`.
-           *
-           * @param {function(Object)=} errorCb Error callback with one argument:
-           *   `httpResponse`.
-           *
-           * @returns {Object} An empty reference that will be
-           *   populated with the actual data once the response is returned
-           *   from the server.
-           *
-           * Data properties:
-           *
-           *  - `exists` – `{boolean=}` -
-           */
-          "exists": {
-            url: urlBase + "/InsulinInjections/:id/exists",
-            method: "GET"
-          },
-
-          /**
-           * @ngdoc method
-           * @name lbServices.Insulin#findById
-           * @methodOf lbServices.Insulin
-           *
-           * @description
-           *
-           * Find a model instance by id from the data source.
-           *
-           * @param {Object=} parameters Request parameters.
-           *
-           *  - `id` – `{*}` - Model id
-           *
-           *  - `filter` – `{object=}` - Filter defining fields and include
-           *
-           * @param {function(Object,Object)=} successCb
-           *   Success callback with two arguments: `value`, `responseHeaders`.
-           *
-           * @param {function(Object)=} errorCb Error callback with one argument:
-           *   `httpResponse`.
-           *
-           * @returns {Object} An empty reference that will be
-           *   populated with the actual data once the response is returned
-           *   from the server.
-           *
-           * <em>
-           * (The remote method definition does not provide any description.
-           * This usually means the response is a `Insulin` object.)
-           * </em>
-           */
-          "findById": {
-            url: urlBase + "/InsulinInjections/:id",
-            method: "GET"
-          },
-
-          /**
-           * @ngdoc method
-           * @name lbServices.Insulin#find
-           * @methodOf lbServices.Insulin
-           *
-           * @description
-           *
-           * Find all instances of the model matched by filter from the data source.
-           *
-           * @param {Object=} parameters Request parameters.
-           *
-           *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
-           *
-           * @param {function(Array.<Object>,Object)=} successCb
-           *   Success callback with two arguments: `value`, `responseHeaders`.
-           *
-           * @param {function(Object)=} errorCb Error callback with one argument:
-           *   `httpResponse`.
-           *
-           * @returns {Array.<Object>} An empty reference that will be
-           *   populated with the actual data once the response is returned
-           *   from the server.
-           *
-           * <em>
-           * (The remote method definition does not provide any description.
-           * This usually means the response is a `Insulin` object.)
-           * </em>
-           */
-          "find": {
-            isArray: true,
-            url: urlBase + "/InsulinInjections",
-            method: "GET"
-          },
-
-          /**
-           * @ngdoc method
-           * @name lbServices.Insulin#findOne
-           * @methodOf lbServices.Insulin
-           *
-           * @description
-           *
-           * Find first instance of the model matched by filter from the data source.
-           *
-           * @param {Object=} parameters Request parameters.
-           *
-           *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
-           *
-           * @param {function(Object,Object)=} successCb
-           *   Success callback with two arguments: `value`, `responseHeaders`.
-           *
-           * @param {function(Object)=} errorCb Error callback with one argument:
-           *   `httpResponse`.
-           *
-           * @returns {Object} An empty reference that will be
-           *   populated with the actual data once the response is returned
-           *   from the server.
-           *
-           * <em>
-           * (The remote method definition does not provide any description.
-           * This usually means the response is a `Insulin` object.)
-           * </em>
-           */
-          "findOne": {
-            url: urlBase + "/InsulinInjections/findOne",
-            method: "GET"
-          },
-
-          /**
-           * @ngdoc method
-           * @name lbServices.Insulin#updateAll
-           * @methodOf lbServices.Insulin
-           *
-           * @description
-           *
-           * Update instances of the model matched by where from the data source.
-           *
-           * @param {Object=} parameters Request parameters.
-           *
-           *  - `where` – `{object=}` - Criteria to match model instances
-           *
-           * @param {Object} postData Request data.
-           *
-           * This method expects a subset of model properties as request parameters.
-           *
-           * @param {function(Object,Object)=} successCb
-           *   Success callback with two arguments: `value`, `responseHeaders`.
-           *
-           * @param {function(Object)=} errorCb Error callback with one argument:
-           *   `httpResponse`.
-           *
-           * @returns {Object} An empty reference that will be
-           *   populated with the actual data once the response is returned
-           *   from the server.
-           *
-           * The number of instances updated
-           */
-          "updateAll": {
-            url: urlBase + "/InsulinInjections/update",
-            method: "POST"
-          },
-
-          /**
-           * @ngdoc method
-           * @name lbServices.Insulin#deleteById
-           * @methodOf lbServices.Insulin
-           *
-           * @description
-           *
-           * Delete a model instance by id from the data source.
-           *
-           * @param {Object=} parameters Request parameters.
-           *
-           *  - `id` – `{*}` - Model id
-           *
-           * @param {function(Object,Object)=} successCb
-           *   Success callback with two arguments: `value`, `responseHeaders`.
-           *
-           * @param {function(Object)=} errorCb Error callback with one argument:
-           *   `httpResponse`.
-           *
-           * @returns {Object} An empty reference that will be
-           *   populated with the actual data once the response is returned
-           *   from the server.
-           *
-           * <em>
-           * (The remote method definition does not provide any description.
-           * This usually means the response is a `Insulin` object.)
-           * </em>
-           */
-          "deleteById": {
-            url: urlBase + "/InsulinInjections/:id",
-            method: "DELETE"
-          },
-
-          /**
-           * @ngdoc method
-           * @name lbServices.Insulin#count
-           * @methodOf lbServices.Insulin
-           *
-           * @description
-           *
-           * Count instances of the model matched by where from the data source.
-           *
-           * @param {Object=} parameters Request parameters.
-           *
-           *  - `where` – `{object=}` - Criteria to match model instances
-           *
-           * @param {function(Object,Object)=} successCb
-           *   Success callback with two arguments: `value`, `responseHeaders`.
-           *
-           * @param {function(Object)=} errorCb Error callback with one argument:
-           *   `httpResponse`.
-           *
-           * @returns {Object} An empty reference that will be
-           *   populated with the actual data once the response is returned
-           *   from the server.
-           *
-           * Data properties:
-           *
-           *  - `count` – `{number=}` -
-           */
-          "count": {
-            url: urlBase + "/InsulinInjections/count",
-            method: "GET"
-          },
-
-          /**
-           * @ngdoc method
-           * @name lbServices.Insulin#prototype$updateAttributes
-           * @methodOf lbServices.Insulin
-           *
-           * @description
-           *
-           * Update attributes for a model instance and persist it into the data source.
-           *
-           * @param {Object=} parameters Request parameters.
-           *
-           *  - `id` – `{*}` - PersistedModel id
-           *
-           * @param {Object} postData Request data.
-           *
-           * This method expects a subset of model properties as request parameters.
-           *
-           * @param {function(Object,Object)=} successCb
-           *   Success callback with two arguments: `value`, `responseHeaders`.
-           *
-           * @param {function(Object)=} errorCb Error callback with one argument:
-           *   `httpResponse`.
-           *
-           * @returns {Object} An empty reference that will be
-           *   populated with the actual data once the response is returned
-           *   from the server.
-           *
-           * <em>
-           * (The remote method definition does not provide any description.
-           * This usually means the response is a `Insulin` object.)
-           * </em>
-           */
-          "prototype$updateAttributes": {
-            url: urlBase + "/InsulinInjections/:id",
-            method: "PUT"
-          },
-
-          /**
-           * @ngdoc method
-           * @name lbServices.Insulin#createChangeStream
-           * @methodOf lbServices.Insulin
-           *
-           * @description
-           *
-           * Create a change stream.
-           *
-           * @param {Object=} parameters Request parameters.
-           *
-           *   This method does not accept any parameters.
-           *   Supply an empty object or omit this argument altogether.
-           *
-           * @param {Object} postData Request data.
-           *
-           *  - `options` – `{object=}` -
-           *
-           * @param {function(Object,Object)=} successCb
-           *   Success callback with two arguments: `value`, `responseHeaders`.
-           *
-           * @param {function(Object)=} errorCb Error callback with one argument:
-           *   `httpResponse`.
-           *
-           * @returns {Object} An empty reference that will be
-           *   populated with the actual data once the response is returned
-           *   from the server.
-           *
-           * Data properties:
-           *
-           *  - `changes` – `{ReadableStream=}` -
-           */
-          "createChangeStream": {
-            url: urlBase + "/InsulinInjections/change-stream",
-            method: "POST"
-          },
-        }
-      );
-
-
-      /**
-       * @ngdoc method
-       * @name lbServices.Insulin#updateOrCreate
-       * @methodOf lbServices.Insulin
-       *
-       * @description
-       *
-       * Update an existing model instance or insert a new one into the data source.
-       *
-       * @param {Object=} parameters Request parameters.
-       *
-       *   This method does not accept any parameters.
-       *   Supply an empty object or omit this argument altogether.
-       *
-       * @param {Object} postData Request data.
-       *
-       * This method expects a subset of model properties as request parameters.
-       *
-       * @param {function(Object,Object)=} successCb
-       *   Success callback with two arguments: `value`, `responseHeaders`.
-       *
-       * @param {function(Object)=} errorCb Error callback with one argument:
-       *   `httpResponse`.
-       *
-       * @returns {Object} An empty reference that will be
-       *   populated with the actual data once the response is returned
-       *   from the server.
-       *
-       * <em>
-       * (The remote method definition does not provide any description.
-       * This usually means the response is a `Insulin` object.)
-       * </em>
-       */
-      R["updateOrCreate"] = R["upsert"];
-
-      /**
-       * @ngdoc method
-       * @name lbServices.Insulin#update
-       * @methodOf lbServices.Insulin
-       *
-       * @description
-       *
-       * Update instances of the model matched by where from the data source.
-       *
-       * @param {Object=} parameters Request parameters.
-       *
-       *  - `where` – `{object=}` - Criteria to match model instances
-       *
-       * @param {Object} postData Request data.
-       *
-       * This method expects a subset of model properties as request parameters.
-       *
-       * @param {function(Object,Object)=} successCb
-       *   Success callback with two arguments: `value`, `responseHeaders`.
-       *
-       * @param {function(Object)=} errorCb Error callback with one argument:
-       *   `httpResponse`.
-       *
-       * @returns {Object} An empty reference that will be
-       *   populated with the actual data once the response is returned
-       *   from the server.
-       *
-       * The number of instances updated
-       */
-      R["update"] = R["updateAll"];
-
-      /**
-       * @ngdoc method
-       * @name lbServices.Insulin#destroyById
-       * @methodOf lbServices.Insulin
-       *
-       * @description
-       *
-       * Delete a model instance by id from the data source.
-       *
-       * @param {Object=} parameters Request parameters.
-       *
-       *  - `id` – `{*}` - Model id
-       *
-       * @param {function(Object,Object)=} successCb
-       *   Success callback with two arguments: `value`, `responseHeaders`.
-       *
-       * @param {function(Object)=} errorCb Error callback with one argument:
-       *   `httpResponse`.
-       *
-       * @returns {Object} An empty reference that will be
-       *   populated with the actual data once the response is returned
-       *   from the server.
-       *
-       * <em>
-       * (The remote method definition does not provide any description.
-       * This usually means the response is a `Insulin` object.)
-       * </em>
-       */
-      R["destroyById"] = R["deleteById"];
-
-      /**
-       * @ngdoc method
-       * @name lbServices.Insulin#removeById
-       * @methodOf lbServices.Insulin
-       *
-       * @description
-       *
-       * Delete a model instance by id from the data source.
-       *
-       * @param {Object=} parameters Request parameters.
-       *
-       *  - `id` – `{*}` - Model id
-       *
-       * @param {function(Object,Object)=} successCb
-       *   Success callback with two arguments: `value`, `responseHeaders`.
-       *
-       * @param {function(Object)=} errorCb Error callback with one argument:
-       *   `httpResponse`.
-       *
-       * @returns {Object} An empty reference that will be
-       *   populated with the actual data once the response is returned
-       *   from the server.
-       *
-       * <em>
-       * (The remote method definition does not provide any description.
-       * This usually means the response is a `Insulin` object.)
-       * </em>
-       */
-      R["removeById"] = R["deleteById"];
-
-
-      /**
-       * @ngdoc property
-       * @name lbServices.Insulin#modelName
-       * @propertyOf lbServices.Insulin
-       * @description
-       * The name of the model represented by this $resource,
-       * i.e. `Insulin`.
-       */
-      R.modelName = "Insulin";
-
-
-      return R;
-    }]);
-
-  /**
-   * @ngdoc object
-   * @name lbServices.Meals
-   * @header lbServices.Meals
-   * @object
-   *
-   * @description
-   *
-   * A $resource object for interacting with the `Meals` model.
-   *
-   * ## Example
-   *
-   * See
-   * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
-   * for an example of using this object.
-   *
-   */
-  module.factory(
-    "Meals",
+    "Meal",
     ['LoopBackResource', 'LoopBackAuth', '$injector', function (Resource, LoopBackAuth, $injector) {
       var R = Resource(
         urlBase + "/Meals/:id",
@@ -2315,8 +1724,8 @@
 
           /**
            * @ngdoc method
-           * @name lbServices.Meals#create
-           * @methodOf lbServices.Meals
+           * @name lbServices.Meal#create
+           * @methodOf lbServices.Meal
            *
            * @description
            *
@@ -2343,7 +1752,7 @@
            *
            * <em>
            * (The remote method definition does not provide any description.
-           * This usually means the response is a `Meals` object.)
+           * This usually means the response is a `Meal` object.)
            * </em>
            */
           "create": {
@@ -2353,8 +1762,8 @@
 
           /**
            * @ngdoc method
-           * @name lbServices.Meals#createMany
-           * @methodOf lbServices.Meals
+           * @name lbServices.Meal#createMany
+           * @methodOf lbServices.Meal
            *
            * @description
            *
@@ -2381,7 +1790,7 @@
            *
            * <em>
            * (The remote method definition does not provide any description.
-           * This usually means the response is a `Meals` object.)
+           * This usually means the response is a `Meal` object.)
            * </em>
            */
           "createMany": {
@@ -2392,8 +1801,8 @@
 
           /**
            * @ngdoc method
-           * @name lbServices.Meals#upsert
-           * @methodOf lbServices.Meals
+           * @name lbServices.Meal#upsert
+           * @methodOf lbServices.Meal
            *
            * @description
            *
@@ -2420,7 +1829,7 @@
            *
            * <em>
            * (The remote method definition does not provide any description.
-           * This usually means the response is a `Meals` object.)
+           * This usually means the response is a `Meal` object.)
            * </em>
            */
           "upsert": {
@@ -2430,8 +1839,8 @@
 
           /**
            * @ngdoc method
-           * @name lbServices.Meals#exists
-           * @methodOf lbServices.Meals
+           * @name lbServices.Meal#exists
+           * @methodOf lbServices.Meal
            *
            * @description
            *
@@ -2462,8 +1871,8 @@
 
           /**
            * @ngdoc method
-           * @name lbServices.Meals#findById
-           * @methodOf lbServices.Meals
+           * @name lbServices.Meal#findById
+           * @methodOf lbServices.Meal
            *
            * @description
            *
@@ -2487,7 +1896,7 @@
            *
            * <em>
            * (The remote method definition does not provide any description.
-           * This usually means the response is a `Meals` object.)
+           * This usually means the response is a `Meal` object.)
            * </em>
            */
           "findById": {
@@ -2497,8 +1906,8 @@
 
           /**
            * @ngdoc method
-           * @name lbServices.Meals#find
-           * @methodOf lbServices.Meals
+           * @name lbServices.Meal#find
+           * @methodOf lbServices.Meal
            *
            * @description
            *
@@ -2520,7 +1929,7 @@
            *
            * <em>
            * (The remote method definition does not provide any description.
-           * This usually means the response is a `Meals` object.)
+           * This usually means the response is a `Meal` object.)
            * </em>
            */
           "find": {
@@ -2531,8 +1940,8 @@
 
           /**
            * @ngdoc method
-           * @name lbServices.Meals#findOne
-           * @methodOf lbServices.Meals
+           * @name lbServices.Meal#findOne
+           * @methodOf lbServices.Meal
            *
            * @description
            *
@@ -2554,7 +1963,7 @@
            *
            * <em>
            * (The remote method definition does not provide any description.
-           * This usually means the response is a `Meals` object.)
+           * This usually means the response is a `Meal` object.)
            * </em>
            */
           "findOne": {
@@ -2564,8 +1973,8 @@
 
           /**
            * @ngdoc method
-           * @name lbServices.Meals#updateAll
-           * @methodOf lbServices.Meals
+           * @name lbServices.Meal#updateAll
+           * @methodOf lbServices.Meal
            *
            * @description
            *
@@ -2598,8 +2007,8 @@
 
           /**
            * @ngdoc method
-           * @name lbServices.Meals#deleteById
-           * @methodOf lbServices.Meals
+           * @name lbServices.Meal#deleteById
+           * @methodOf lbServices.Meal
            *
            * @description
            *
@@ -2621,7 +2030,7 @@
            *
            * <em>
            * (The remote method definition does not provide any description.
-           * This usually means the response is a `Meals` object.)
+           * This usually means the response is a `Meal` object.)
            * </em>
            */
           "deleteById": {
@@ -2631,8 +2040,8 @@
 
           /**
            * @ngdoc method
-           * @name lbServices.Meals#count
-           * @methodOf lbServices.Meals
+           * @name lbServices.Meal#count
+           * @methodOf lbServices.Meal
            *
            * @description
            *
@@ -2663,8 +2072,8 @@
 
           /**
            * @ngdoc method
-           * @name lbServices.Meals#prototype$updateAttributes
-           * @methodOf lbServices.Meals
+           * @name lbServices.Meal#prototype$updateAttributes
+           * @methodOf lbServices.Meal
            *
            * @description
            *
@@ -2690,7 +2099,7 @@
            *
            * <em>
            * (The remote method definition does not provide any description.
-           * This usually means the response is a `Meals` object.)
+           * This usually means the response is a `Meal` object.)
            * </em>
            */
           "prototype$updateAttributes": {
@@ -2700,8 +2109,8 @@
 
           /**
            * @ngdoc method
-           * @name lbServices.Meals#createChangeStream
-           * @methodOf lbServices.Meals
+           * @name lbServices.Meal#createChangeStream
+           * @methodOf lbServices.Meal
            *
            * @description
            *
@@ -2740,8 +2149,8 @@
 
       /**
        * @ngdoc method
-       * @name lbServices.Meals#updateOrCreate
-       * @methodOf lbServices.Meals
+       * @name lbServices.Meal#updateOrCreate
+       * @methodOf lbServices.Meal
        *
        * @description
        *
@@ -2768,15 +2177,15 @@
        *
        * <em>
        * (The remote method definition does not provide any description.
-       * This usually means the response is a `Meals` object.)
+       * This usually means the response is a `Meal` object.)
        * </em>
        */
       R["updateOrCreate"] = R["upsert"];
 
       /**
        * @ngdoc method
-       * @name lbServices.Meals#update
-       * @methodOf lbServices.Meals
+       * @name lbServices.Meal#update
+       * @methodOf lbServices.Meal
        *
        * @description
        *
@@ -2806,8 +2215,8 @@
 
       /**
        * @ngdoc method
-       * @name lbServices.Meals#destroyById
-       * @methodOf lbServices.Meals
+       * @name lbServices.Meal#destroyById
+       * @methodOf lbServices.Meal
        *
        * @description
        *
@@ -2829,15 +2238,15 @@
        *
        * <em>
        * (The remote method definition does not provide any description.
-       * This usually means the response is a `Meals` object.)
+       * This usually means the response is a `Meal` object.)
        * </em>
        */
       R["destroyById"] = R["deleteById"];
 
       /**
        * @ngdoc method
-       * @name lbServices.Meals#removeById
-       * @methodOf lbServices.Meals
+       * @name lbServices.Meal#removeById
+       * @methodOf lbServices.Meal
        *
        * @description
        *
@@ -2859,7 +2268,7 @@
        *
        * <em>
        * (The remote method definition does not provide any description.
-       * This usually means the response is a `Meals` object.)
+       * This usually means the response is a `Meal` object.)
        * </em>
        */
       R["removeById"] = R["deleteById"];
@@ -2867,13 +2276,604 @@
 
       /**
        * @ngdoc property
-       * @name lbServices.Meals#modelName
-       * @propertyOf lbServices.Meals
+       * @name lbServices.Meal#modelName
+       * @propertyOf lbServices.Meal
        * @description
        * The name of the model represented by this $resource,
-       * i.e. `Meals`.
+       * i.e. `Meal`.
        */
-      R.modelName = "Meals";
+      R.modelName = "Meal";
+
+
+      return R;
+    }]);
+
+  /**
+   * @ngdoc object
+   * @name lbServices.InsulinInjection
+   * @header lbServices.InsulinInjection
+   * @object
+   *
+   * @description
+   *
+   * A $resource object for interacting with the `InsulinInjection` model.
+   *
+   * ## Example
+   *
+   * See
+   * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+   * for an example of using this object.
+   *
+   */
+  module.factory(
+    "InsulinInjection",
+    ['LoopBackResource', 'LoopBackAuth', '$injector', function (Resource, LoopBackAuth, $injector) {
+      var R = Resource(
+        urlBase + "/InsulinInjections/:id",
+        {'id': '@id'},
+        {
+
+          /**
+           * @ngdoc method
+           * @name lbServices.InsulinInjection#create
+           * @methodOf lbServices.InsulinInjection
+           *
+           * @description
+           *
+           * Create a new instance of the model and persist it into the data source.
+           *
+           * @param {Object=} parameters Request parameters.
+           *
+           *   This method does not accept any parameters.
+           *   Supply an empty object or omit this argument altogether.
+           *
+           * @param {Object} postData Request data.
+           *
+           * This method expects a subset of model properties as request parameters.
+           *
+           * @param {function(Object,Object)=} successCb
+           *   Success callback with two arguments: `value`, `responseHeaders`.
+           *
+           * @param {function(Object)=} errorCb Error callback with one argument:
+           *   `httpResponse`.
+           *
+           * @returns {Object} An empty reference that will be
+           *   populated with the actual data once the response is returned
+           *   from the server.
+           *
+           * <em>
+           * (The remote method definition does not provide any description.
+           * This usually means the response is a `InsulinInjection` object.)
+           * </em>
+           */
+          "create": {
+            url: urlBase + "/InsulinInjections",
+            method: "POST"
+          },
+
+          /**
+           * @ngdoc method
+           * @name lbServices.InsulinInjection#createMany
+           * @methodOf lbServices.InsulinInjection
+           *
+           * @description
+           *
+           * Create a new instance of the model and persist it into the data source.
+           *
+           * @param {Object=} parameters Request parameters.
+           *
+           *   This method does not accept any parameters.
+           *   Supply an empty object or omit this argument altogether.
+           *
+           * @param {Object} postData Request data.
+           *
+           * This method expects a subset of model properties as request parameters.
+           *
+           * @param {function(Array.<Object>,Object)=} successCb
+           *   Success callback with two arguments: `value`, `responseHeaders`.
+           *
+           * @param {function(Object)=} errorCb Error callback with one argument:
+           *   `httpResponse`.
+           *
+           * @returns {Array.<Object>} An empty reference that will be
+           *   populated with the actual data once the response is returned
+           *   from the server.
+           *
+           * <em>
+           * (The remote method definition does not provide any description.
+           * This usually means the response is a `InsulinInjection` object.)
+           * </em>
+           */
+          "createMany": {
+            isArray: true,
+            url: urlBase + "/InsulinInjections",
+            method: "POST"
+          },
+
+          /**
+           * @ngdoc method
+           * @name lbServices.InsulinInjection#upsert
+           * @methodOf lbServices.InsulinInjection
+           *
+           * @description
+           *
+           * Update an existing model instance or insert a new one into the data source.
+           *
+           * @param {Object=} parameters Request parameters.
+           *
+           *   This method does not accept any parameters.
+           *   Supply an empty object or omit this argument altogether.
+           *
+           * @param {Object} postData Request data.
+           *
+           * This method expects a subset of model properties as request parameters.
+           *
+           * @param {function(Object,Object)=} successCb
+           *   Success callback with two arguments: `value`, `responseHeaders`.
+           *
+           * @param {function(Object)=} errorCb Error callback with one argument:
+           *   `httpResponse`.
+           *
+           * @returns {Object} An empty reference that will be
+           *   populated with the actual data once the response is returned
+           *   from the server.
+           *
+           * <em>
+           * (The remote method definition does not provide any description.
+           * This usually means the response is a `InsulinInjection` object.)
+           * </em>
+           */
+          "upsert": {
+            url: urlBase + "/InsulinInjections",
+            method: "PUT"
+          },
+
+          /**
+           * @ngdoc method
+           * @name lbServices.InsulinInjection#exists
+           * @methodOf lbServices.InsulinInjection
+           *
+           * @description
+           *
+           * Check whether a model instance exists in the data source.
+           *
+           * @param {Object=} parameters Request parameters.
+           *
+           *  - `id` – `{*}` - Model id
+           *
+           * @param {function(Object,Object)=} successCb
+           *   Success callback with two arguments: `value`, `responseHeaders`.
+           *
+           * @param {function(Object)=} errorCb Error callback with one argument:
+           *   `httpResponse`.
+           *
+           * @returns {Object} An empty reference that will be
+           *   populated with the actual data once the response is returned
+           *   from the server.
+           *
+           * Data properties:
+           *
+           *  - `exists` – `{boolean=}` -
+           */
+          "exists": {
+            url: urlBase + "/InsulinInjections/:id/exists",
+            method: "GET"
+          },
+
+          /**
+           * @ngdoc method
+           * @name lbServices.InsulinInjection#findById
+           * @methodOf lbServices.InsulinInjection
+           *
+           * @description
+           *
+           * Find a model instance by id from the data source.
+           *
+           * @param {Object=} parameters Request parameters.
+           *
+           *  - `id` – `{*}` - Model id
+           *
+           *  - `filter` – `{object=}` - Filter defining fields and include
+           *
+           * @param {function(Object,Object)=} successCb
+           *   Success callback with two arguments: `value`, `responseHeaders`.
+           *
+           * @param {function(Object)=} errorCb Error callback with one argument:
+           *   `httpResponse`.
+           *
+           * @returns {Object} An empty reference that will be
+           *   populated with the actual data once the response is returned
+           *   from the server.
+           *
+           * <em>
+           * (The remote method definition does not provide any description.
+           * This usually means the response is a `InsulinInjection` object.)
+           * </em>
+           */
+          "findById": {
+            url: urlBase + "/InsulinInjections/:id",
+            method: "GET"
+          },
+
+          /**
+           * @ngdoc method
+           * @name lbServices.InsulinInjection#find
+           * @methodOf lbServices.InsulinInjection
+           *
+           * @description
+           *
+           * Find all instances of the model matched by filter from the data source.
+           *
+           * @param {Object=} parameters Request parameters.
+           *
+           *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+           *
+           * @param {function(Array.<Object>,Object)=} successCb
+           *   Success callback with two arguments: `value`, `responseHeaders`.
+           *
+           * @param {function(Object)=} errorCb Error callback with one argument:
+           *   `httpResponse`.
+           *
+           * @returns {Array.<Object>} An empty reference that will be
+           *   populated with the actual data once the response is returned
+           *   from the server.
+           *
+           * <em>
+           * (The remote method definition does not provide any description.
+           * This usually means the response is a `InsulinInjection` object.)
+           * </em>
+           */
+          "find": {
+            isArray: true,
+            url: urlBase + "/InsulinInjections",
+            method: "GET"
+          },
+
+          /**
+           * @ngdoc method
+           * @name lbServices.InsulinInjection#findOne
+           * @methodOf lbServices.InsulinInjection
+           *
+           * @description
+           *
+           * Find first instance of the model matched by filter from the data source.
+           *
+           * @param {Object=} parameters Request parameters.
+           *
+           *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+           *
+           * @param {function(Object,Object)=} successCb
+           *   Success callback with two arguments: `value`, `responseHeaders`.
+           *
+           * @param {function(Object)=} errorCb Error callback with one argument:
+           *   `httpResponse`.
+           *
+           * @returns {Object} An empty reference that will be
+           *   populated with the actual data once the response is returned
+           *   from the server.
+           *
+           * <em>
+           * (The remote method definition does not provide any description.
+           * This usually means the response is a `InsulinInjection` object.)
+           * </em>
+           */
+          "findOne": {
+            url: urlBase + "/InsulinInjections/findOne",
+            method: "GET"
+          },
+
+          /**
+           * @ngdoc method
+           * @name lbServices.InsulinInjection#updateAll
+           * @methodOf lbServices.InsulinInjection
+           *
+           * @description
+           *
+           * Update instances of the model matched by where from the data source.
+           *
+           * @param {Object=} parameters Request parameters.
+           *
+           *  - `where` – `{object=}` - Criteria to match model instances
+           *
+           * @param {Object} postData Request data.
+           *
+           * This method expects a subset of model properties as request parameters.
+           *
+           * @param {function(Object,Object)=} successCb
+           *   Success callback with two arguments: `value`, `responseHeaders`.
+           *
+           * @param {function(Object)=} errorCb Error callback with one argument:
+           *   `httpResponse`.
+           *
+           * @returns {Object} An empty reference that will be
+           *   populated with the actual data once the response is returned
+           *   from the server.
+           *
+           * The number of instances updated
+           */
+          "updateAll": {
+            url: urlBase + "/InsulinInjections/update",
+            method: "POST"
+          },
+
+          /**
+           * @ngdoc method
+           * @name lbServices.InsulinInjection#deleteById
+           * @methodOf lbServices.InsulinInjection
+           *
+           * @description
+           *
+           * Delete a model instance by id from the data source.
+           *
+           * @param {Object=} parameters Request parameters.
+           *
+           *  - `id` – `{*}` - Model id
+           *
+           * @param {function(Object,Object)=} successCb
+           *   Success callback with two arguments: `value`, `responseHeaders`.
+           *
+           * @param {function(Object)=} errorCb Error callback with one argument:
+           *   `httpResponse`.
+           *
+           * @returns {Object} An empty reference that will be
+           *   populated with the actual data once the response is returned
+           *   from the server.
+           *
+           * <em>
+           * (The remote method definition does not provide any description.
+           * This usually means the response is a `InsulinInjection` object.)
+           * </em>
+           */
+          "deleteById": {
+            url: urlBase + "/InsulinInjections/:id",
+            method: "DELETE"
+          },
+
+          /**
+           * @ngdoc method
+           * @name lbServices.InsulinInjection#count
+           * @methodOf lbServices.InsulinInjection
+           *
+           * @description
+           *
+           * Count instances of the model matched by where from the data source.
+           *
+           * @param {Object=} parameters Request parameters.
+           *
+           *  - `where` – `{object=}` - Criteria to match model instances
+           *
+           * @param {function(Object,Object)=} successCb
+           *   Success callback with two arguments: `value`, `responseHeaders`.
+           *
+           * @param {function(Object)=} errorCb Error callback with one argument:
+           *   `httpResponse`.
+           *
+           * @returns {Object} An empty reference that will be
+           *   populated with the actual data once the response is returned
+           *   from the server.
+           *
+           * Data properties:
+           *
+           *  - `count` – `{number=}` -
+           */
+          "count": {
+            url: urlBase + "/InsulinInjections/count",
+            method: "GET"
+          },
+
+          /**
+           * @ngdoc method
+           * @name lbServices.InsulinInjection#prototype$updateAttributes
+           * @methodOf lbServices.InsulinInjection
+           *
+           * @description
+           *
+           * Update attributes for a model instance and persist it into the data source.
+           *
+           * @param {Object=} parameters Request parameters.
+           *
+           *  - `id` – `{*}` - PersistedModel id
+           *
+           * @param {Object} postData Request data.
+           *
+           * This method expects a subset of model properties as request parameters.
+           *
+           * @param {function(Object,Object)=} successCb
+           *   Success callback with two arguments: `value`, `responseHeaders`.
+           *
+           * @param {function(Object)=} errorCb Error callback with one argument:
+           *   `httpResponse`.
+           *
+           * @returns {Object} An empty reference that will be
+           *   populated with the actual data once the response is returned
+           *   from the server.
+           *
+           * <em>
+           * (The remote method definition does not provide any description.
+           * This usually means the response is a `InsulinInjection` object.)
+           * </em>
+           */
+          "prototype$updateAttributes": {
+            url: urlBase + "/InsulinInjections/:id",
+            method: "PUT"
+          },
+
+          /**
+           * @ngdoc method
+           * @name lbServices.InsulinInjection#createChangeStream
+           * @methodOf lbServices.InsulinInjection
+           *
+           * @description
+           *
+           * Create a change stream.
+           *
+           * @param {Object=} parameters Request parameters.
+           *
+           *   This method does not accept any parameters.
+           *   Supply an empty object or omit this argument altogether.
+           *
+           * @param {Object} postData Request data.
+           *
+           *  - `options` – `{object=}` -
+           *
+           * @param {function(Object,Object)=} successCb
+           *   Success callback with two arguments: `value`, `responseHeaders`.
+           *
+           * @param {function(Object)=} errorCb Error callback with one argument:
+           *   `httpResponse`.
+           *
+           * @returns {Object} An empty reference that will be
+           *   populated with the actual data once the response is returned
+           *   from the server.
+           *
+           * Data properties:
+           *
+           *  - `changes` – `{ReadableStream=}` -
+           */
+          "createChangeStream": {
+            url: urlBase + "/InsulinInjections/change-stream",
+            method: "POST"
+          },
+        }
+      );
+
+
+      /**
+       * @ngdoc method
+       * @name lbServices.InsulinInjection#updateOrCreate
+       * @methodOf lbServices.InsulinInjection
+       *
+       * @description
+       *
+       * Update an existing model instance or insert a new one into the data source.
+       *
+       * @param {Object=} parameters Request parameters.
+       *
+       *   This method does not accept any parameters.
+       *   Supply an empty object or omit this argument altogether.
+       *
+       * @param {Object} postData Request data.
+       *
+       * This method expects a subset of model properties as request parameters.
+       *
+       * @param {function(Object,Object)=} successCb
+       *   Success callback with two arguments: `value`, `responseHeaders`.
+       *
+       * @param {function(Object)=} errorCb Error callback with one argument:
+       *   `httpResponse`.
+       *
+       * @returns {Object} An empty reference that will be
+       *   populated with the actual data once the response is returned
+       *   from the server.
+       *
+       * <em>
+       * (The remote method definition does not provide any description.
+       * This usually means the response is a `InsulinInjection` object.)
+       * </em>
+       */
+      R["updateOrCreate"] = R["upsert"];
+
+      /**
+       * @ngdoc method
+       * @name lbServices.InsulinInjection#update
+       * @methodOf lbServices.InsulinInjection
+       *
+       * @description
+       *
+       * Update instances of the model matched by where from the data source.
+       *
+       * @param {Object=} parameters Request parameters.
+       *
+       *  - `where` – `{object=}` - Criteria to match model instances
+       *
+       * @param {Object} postData Request data.
+       *
+       * This method expects a subset of model properties as request parameters.
+       *
+       * @param {function(Object,Object)=} successCb
+       *   Success callback with two arguments: `value`, `responseHeaders`.
+       *
+       * @param {function(Object)=} errorCb Error callback with one argument:
+       *   `httpResponse`.
+       *
+       * @returns {Object} An empty reference that will be
+       *   populated with the actual data once the response is returned
+       *   from the server.
+       *
+       * The number of instances updated
+       */
+      R["update"] = R["updateAll"];
+
+      /**
+       * @ngdoc method
+       * @name lbServices.InsulinInjection#destroyById
+       * @methodOf lbServices.InsulinInjection
+       *
+       * @description
+       *
+       * Delete a model instance by id from the data source.
+       *
+       * @param {Object=} parameters Request parameters.
+       *
+       *  - `id` – `{*}` - Model id
+       *
+       * @param {function(Object,Object)=} successCb
+       *   Success callback with two arguments: `value`, `responseHeaders`.
+       *
+       * @param {function(Object)=} errorCb Error callback with one argument:
+       *   `httpResponse`.
+       *
+       * @returns {Object} An empty reference that will be
+       *   populated with the actual data once the response is returned
+       *   from the server.
+       *
+       * <em>
+       * (The remote method definition does not provide any description.
+       * This usually means the response is a `InsulinInjection` object.)
+       * </em>
+       */
+      R["destroyById"] = R["deleteById"];
+
+      /**
+       * @ngdoc method
+       * @name lbServices.InsulinInjection#removeById
+       * @methodOf lbServices.InsulinInjection
+       *
+       * @description
+       *
+       * Delete a model instance by id from the data source.
+       *
+       * @param {Object=} parameters Request parameters.
+       *
+       *  - `id` – `{*}` - Model id
+       *
+       * @param {function(Object,Object)=} successCb
+       *   Success callback with two arguments: `value`, `responseHeaders`.
+       *
+       * @param {function(Object)=} errorCb Error callback with one argument:
+       *   `httpResponse`.
+       *
+       * @returns {Object} An empty reference that will be
+       *   populated with the actual data once the response is returned
+       *   from the server.
+       *
+       * <em>
+       * (The remote method definition does not provide any description.
+       * This usually means the response is a `InsulinInjection` object.)
+       * </em>
+       */
+      R["removeById"] = R["deleteById"];
+
+
+      /**
+       * @ngdoc property
+       * @name lbServices.InsulinInjection#modelName
+       * @propertyOf lbServices.InsulinInjection
+       * @description
+       * The name of the model represented by this $resource,
+       * i.e. `InsulinInjection`.
+       */
+      R.modelName = "InsulinInjection";
 
 
       return R;
@@ -2999,7 +2999,7 @@
        * Configure the REST transport to use a different header for sending
        * the authentication token. It is sent in the `Authorization` header
        * by default.
-       */
+     */
       this.setAuthHeader = function (header) {
         authHeader = header;
       };
@@ -3041,7 +3041,7 @@
             // that exactly fits our needs.
             var result = resource.upsert.call(this, {}, this, success, error);
             return result.$promise || result;
-          };
+        };
           return resource;
         };
       }];
