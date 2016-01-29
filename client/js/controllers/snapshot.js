@@ -13,8 +13,12 @@
             $log.debug("toggle left is done");
           });
       };
+      vm.onSwipe = function(ev){
+        console.info('Swiped');
+        $mdSidenav('left').close()
 
-      vm.close = function () {
+      };
+      vm.close = function (ev) {
         $mdSidenav('left').close()
           .then(function () {
             $log.debug("close LEFT is done");

@@ -36,9 +36,10 @@
 
 <div layout style="border:none;">
   <!--sidenav-->
-  <div layout="column" style="height: 100%; border:none;">
-    <md-sidenav class="" md-component-id="left"
+  <div layout="column" class="no-select" md-swipe-left="SS.close()" style="height: 100%; border:none;">
+    <md-sidenav class="no-select" md-component-id="left"
                 md-is-locked-open="$mdMedia('gt-sm')"
+                md-swipe-left="SS.onSwipe()"
     style="background-color: #2196F3; color: ghostwhite">
       <md-toolbar layout="column" layout-align="start end" hide-gt-sm class="md-hue-2">
         <div layout-align="center center" class="md-padding closebox">
