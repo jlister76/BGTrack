@@ -25,19 +25,19 @@
           controller: 'SnapShotCtrl',
           controllerAs: 'SS'
         })
-        .state('selector.glucose-test', {
+        .state('glucose-test', {
           url: '/new/glucose-test',
           templateUrl: '../views/form.tmpl.html',
           controller: 'SnapShotCtrl',
           controllerAs: 'SS'
         })
-        .state('selector.new-insulin-injection', {
+        .state('new-insulin-injection', {
           url: '/new/insulin-injection',
           templateUrl: '../views/insulin.form.tmpl.html',
           controller: 'SnapShotCtrl',
           controllerAs: 'SS'
         })
-        .state('selector.new-meal', {
+        .state('new-meal', {
           url: '/new/meal',
           templateUrl: '../views/meallog.form.tmpl.html',
           controller: 'SnapShotCtrl',
