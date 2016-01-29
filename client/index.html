@@ -30,14 +30,14 @@
       style="display: flex; min-height: 100%; height: 100%;">
 <md-toolbar layout="row" layout-align="center center" class="md-padding md-hue-2">
     <span>
-      <md-icon md-svg-src="img/noun_42681_cc.svg" style="color: #ffafbc"></md-icon>
+      <md-icon md-svg-src="img/noun_42681_cc.svg" style="color: #28fffd"></md-icon>
       Blood Glucose Tracker </span>
 </md-toolbar>
 
 <div layout style="border:none;">
   <!--sidenav-->
   <div layout="column" style="height: 100%; border:none;">
-    <md-sidenav class="md-padding" md-component-id="left"
+    <md-sidenav class="" md-component-id="left"
                 md-is-locked-open="$mdMedia('gt-sm')"
     style="background-color: #2196F3; color: ghostwhite">
       <md-toolbar layout="column" layout-align="start end" hide-gt-sm class="md-hue-2">
@@ -46,8 +46,8 @@
         </div>
       </md-toolbar>
 
-      <div layout="column" layout-align="start">
-        <header><h3>Weekly Average</h3></header>
+      <div class="md-padding"><div layout="column" layout-align="start">
+        <header><h4 class="md-subhead">Weekly Average</h4></header>
         <section layout layout-align="end end" class="md-padding">
           <span class="md-title">{{SS.daily7 | number:0}}</span>
           <div class="md-caption md-padding">ml/dL</div>
@@ -55,7 +55,7 @@
         <md-divider></md-divider>
       </div>
       <div layout="column" layout-align="start">
-        <header><h3>Floating Fasting Average</h3></header>
+        <header><h4 class="md-subhead">Floating Fasting Average</h4></header>
         <section layout layout-align="end end" class="md-padding">
           <span class="md-title">{{SS.fastingAvg | number:0}}</span>
           <div class="md-caption md-padding">ml/dL</div>
@@ -64,7 +64,7 @@
       </div>
 
       <div layout="column" layout-align="start">
-        <header><h3>Daily Carbs</h3></header>
+        <header><h4 class="md-subhead">Daily Carbs</h4></header>
         <section layout layout-align="end end" class="md-padding">
           <span class="md-title">36</span>
           <div class="md-caption md-padding">grams/day</div>
@@ -73,15 +73,15 @@
       </div>
 
       <div layout="column" layout-align="start">
-        <header><h2 class="md-title">Insulin</h2></header>
-        <hr/>
-        <h3>Fast-Acting</h3>
+        <header><h2 class="md-headline">Insulin</h2></header>
+
+        <h4 class="md-subhead">Fast-Acting</h4>
         <section layout layout-align="end end" class="md-padding">
           <span class="md-title">14</span>
           <div class="md-caption md-padding">grams/day</div>
         </section>
         <md-divider></md-divider>
-        <h3>Long-Lasting</h3>
+        <h4 class="md-subhead">Long-Lasting</h4>
         <section layout layout-align="end end" class="md-padding">
           <span class="md-title">24</span>
           <div class="md-caption md-padding">grams/day</div>
@@ -93,15 +93,7 @@
             <div class="md-caption md-padding">grams/day</div>
           </section>
         </footer>
-      </div>
-      <hr/>
-      <header><h2>Comments</h2></header>
-      <md-card>
-        <md-card-content><p>Text inside the card</p></md-card-content>
-      </md-card>
-      <md-card>
-        <md-card-content><p>Text inside the card</p></md-card-content>
-      </md-card>
+      </div>   </div>
 
     </md-sidenav>
   </div>
