@@ -30,15 +30,16 @@
       style="display: flex; min-height: 100%; height: 100%;">
 <md-toolbar layout="row" layout-align="center center" class="md-padding md-hue-2">
     <span>
-      <md-icon md-svg-src="img/noun_42681_cc.svg" style="color: cornflowerblue"></md-icon>
+      <md-icon md-svg-src="img/noun_42681_cc.svg" style="color: #ffafbc"></md-icon>
       Blood Glucose Tracker </span>
 </md-toolbar>
 
 <div layout style="border:none;">
   <!--sidenav-->
   <div layout="column" style="height: 100%; border:none;">
-    <md-sidenav class="md-sidenav-left md-padding" md-component-id="left"
-                md-is-locked-open="$mdMedia('gt-sm')">
+    <md-sidenav class="md-padding" md-component-id="left"
+                md-is-locked-open="$mdMedia('gt-sm')"
+    style="background-color: #2196F3; color: ghostwhite">
       <md-toolbar layout="column" layout-align="start end" hide-gt-sm class="md-hue-2">
         <div layout-align="center center" class="md-padding closebox">
           <md-icon hide-gt-sm ng-click="SS.close()"><i class="mdi mdi-close"></i></md-icon>
