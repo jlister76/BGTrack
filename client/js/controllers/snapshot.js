@@ -142,7 +142,27 @@
 
           })
       };
+      vm.time = moment().startOf('day');
+      console.info(vm.time);
       vm.glucoseCalculations();
+            vm.getCarbs = function() {
+             Meal
+
+                .find({filter: {order: 'mealDateTime DESC'}})
+                .$promise
+                .then(function(data){
+
+                  _.groupBy(data, 'mealDateTime')
+                  console.info(data);
+                  _.forEach(data, function(val){
+                    moment(vm.time).isAfter(data.mealDateTime)
+                    console.info(data);
+                  })
+                })
+
+            };
+      vm.getCarbs();
+
 
     }]);//EOC
 
