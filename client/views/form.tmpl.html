@@ -7,7 +7,7 @@
       <md-input-container><label for="result">Glucose Reading</label>
         <input type="text" required id="result" name="result" ng-model="SS.newTestResult.bloodGlucose"
                ng-minlength="2"
-               ng-maxlength="3" ng-pattern="/\d/" placeholder="e.g. 96"/>
+               ng-maxlength="3" ng-pattern="/\d/"/>
         <div ng-messages="SS.glucoseTestForm.result.$error">
           <div ng-message="required">This is required.</div>
           <div ng-message="maxlength">2 to 3 digit reading is required.</div>

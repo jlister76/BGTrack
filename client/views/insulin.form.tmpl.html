@@ -7,7 +7,7 @@
       <md-input-container><label for="units">Number of units</label>
         <input type="text" required id="units" name="unit" ng-model="SS.newInjection.units"
                ng-minlength="1"
-               ng-maxlength="3" ng-pattern="/\d/" placeholder="e.g. 10"/>
+               ng-maxlength="3" ng-pattern="/\d/"/>
         <div ng-messages="SS.insulinControlForm.unit.$error">
           <div ng-message="required">This is required.</div>
           <div ng-message="maxlength">Units range from 0-100</div>
