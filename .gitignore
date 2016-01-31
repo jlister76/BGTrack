@@ -15,7 +15,6 @@
 .project
 .strong-pm
 coverage
-/client/vendor
-client/vendor/*
+client/vendor/
 node_modules
 npm-debug.log

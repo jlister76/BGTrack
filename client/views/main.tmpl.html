@@ -17,16 +17,27 @@
       </md-toolbar>
 
       <div class="md-padding">
-        <div layout="column" layout-align="start">
-          <header><h4 class="md-subhead">Weekly Average</h4></header>
-          <section layout layout-align="end end" class="md-padding">
-            <span class="md-title">{{glucose.weeklyAvg | number:0}}</span>
+        <div layout="column" layout-align="start" class="md-padding">
+          <header><span class="md-title">A1c</span></header>
+          <section layout layout-align="end end" class="class=" md-padding
+          "">
+          <span class="md-title">{{glucose.A1c | number:1}}</span>
             <div class="md-caption md-padding">ml/dL</div>
           </section>
           <md-divider></md-divider>
         </div>
-        <div layout="column" layout-align="start">
-          <header><h4 class="md-subhead">Floating Fasting Average</h4></header>
+        <div layout="column" layout-align="start" class="md-padding">
+          <div layout layout-align="space-between">
+            <header><span class="md-subhead">In-Target</span></header>
+            <span>Yes</span></div>
+          <section layout layout-align="end end" class="">
+            &nbsp;<span class="md-title"> -- </span>
+            <div class="md-caption md-padding">day(s)</div>
+          </section>
+          <md-divider></md-divider>
+        </div>
+        <div layout="column" layout-align="start" class="md-padding">
+          <header><span class="md-subhead">Fasting Average&nbsp;<small>(float)</small></span></header>
           <section layout layout-align="end end" class="md-padding">
             <span class="md-title">{{glucose.fastingAvg | number:0}}</span>
             <div class="md-caption md-padding">ml/dL</div>
@@ -34,30 +45,26 @@
           <md-divider></md-divider>
         </div>
 
-        <div layout="column" layout-align="start">
-          <header><h4 class="md-subhead">Daily Carbs</h4></header>
-          <section layout layout-align="end end" class="md-padding">
-            <span class="md-title">{{carb.count}}</span>
-            <div class="md-caption md-padding">grams/day</div>
-          </section>
-          <md-divider></md-divider>
-        </div>
 
         <div layout="column" layout-align="start">
           <header><h2 class="md-headline">Insulin</h2></header>
 
-          <h4 class="md-subhead">Fast-Acting</h4>
-          <section layout layout-align="end end" class="md-padding">
-            <span class="md-title">{{insulin.fastActing}}</span>
-            <div class="md-caption md-padding">grams/day</div>
-          </section>
-          <md-divider></md-divider>
-          <h4 class="md-subhead">Long-Lasting</h4>
-          <section layout layout-align="end end" class="md-padding">
-            <span class="md-title">{{insulin.longLasting}}</span>
-            <div class="md-caption md-padding">grams/day</div>
-          </section>
-          <md-divider></md-divider>
+          <div layout="column" layout-align="start" class="md-padding">
+            <header><span class="md-subhead">Fast Acting</span></header>
+            <section layout layout-align="end end" class="">
+              <span class="md-title">{{insulin.fastActing}}</span>
+              <div class="md-caption md-padding">grams/day</div>
+            </section>
+            <md-divider></md-divider>
+          </div>
+          <div layout="column" layout-align="start" class="md-padding">
+            <header><span class="md-subhead">Long Lasting</span></header>
+            <section layout layout-align="end end" class="">
+              <span class="md-title">{{insulin.longLasting}}</span>
+              <div class="md-caption md-padding">grams/day</div>
+            </section>
+            <md-divider></md-divider>
+          </div>
           <footer>Daily Total Insulin Units
             <section layout layout-align="end end" class="md-padding">
               <span class="md-title">{{insulin.units}}</span>
@@ -86,7 +93,7 @@
     </nav>
 
     <section flex layout="column" class="md-padding" ui-view style="border: none; min-height: 100vh;">
-      <div layout="row" style="background-color: #fafafa; color: dimgrey; min-height: 100vh; ">
+      <div layout="column" style="background-color: #fafafa; color: dimgrey; min-height: 100vh; ">
 
         <!--  <section flex="80" layout="column" class="">
            <h3>Select custom time range</h3>
@@ -126,19 +133,20 @@
             </div>
           </section>-->
 
-        <div>
+        <div layout="row" layout-align="start start" style="border: solid thin blue;">
+          <!--DEMO CODE <md-select ng-model="selectedUser">
+            <md-option ng-value="user" ng-repeat="user in users">{{ user.name }}</md-option>
+            </md-select> DEMO CODE-->
+          <span style="margin: 1.8rem;">My glucose history within </span>&nbsp;
+          <md-select ng-model="sS.span" placeholder="Glucose History">
+            <md-option ng-value="timespan" ng-repeat="timespan in timespans">
+              {{timespan}}
+            </md-option>
 
-          <md-input-container>
-
-            <!--<md-select ng-model="timeSpan" placeholder="Select timeframe">
-              <md-option ng-repeat="timespan in range">
-                {{timespan}}
-              </md-option>
-            </md-select>-->
-          </md-input-container>
+          </md-select>
 
         </div>
-
+        <div flex layout>{{sS.span}}</div>
       </div>
 
 

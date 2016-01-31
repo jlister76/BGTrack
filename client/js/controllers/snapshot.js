@@ -8,14 +8,9 @@
       var today = moment().startOf('day');
       var tomorrow = moment().startOf('day').add(1, 'day');
       console.log(today.format('MM DD YYYY HH:MM'), tomorrow.format('MM DD YYYY HH:MM'));
-      $scope.range = $scope.range || {
-          recent: 'Most Recent',
-          week: '7 day',
-          twoWeek: '14 day',
-          month: '30 day',
-          threeMonth: '90 day'
-        };
-      $scope.carb = $scope.carb || {count: null};
+
+      $scope.timespans = ['Most Recent', '7 days', '14 days', '30 days', '90 days'];
+      $scope.carb = $scope.carb || {dailyCount: null, total: null};
       $scope.glucose = $scope.glucose || {fastingAvg: null};
       $scope.insulin = $scope.insulin || {units: null, longLasting: null};
 
@@ -26,19 +21,22 @@
           .$promise
           .then(function (data) {
             //console.info(data);
-            var arr = [];
+            var dailyCarbs = [];
+            var totalCarbs = [];
             var dataGroup = _.groupBy(data, function (d) {
               var mealDateTime = moment(d.mealDateTime);
 
+              if (mealDateTime.isBetween(today, tomorrow)) {
+                dailyCarbs.push(d.carbCount);
 
-              if (moment(mealDateTime).isBefore(tomorrow)) {
-                arr.push(d.carbCount);
-                //console.info(arr);
+              } else {
+                totalCarbs.push(d.carbCount);
               }
 
             });
             //console.info(arr);
-            $scope.carb.count = _.sum(arr);
+            $scope.carb.total = _.sum(totalCarbs);
+            $scope.carb.dailyCount = _.sum(dailyCarbs);
             //console.info(sunOfCarbs);
 
           });
@@ -66,8 +64,8 @@
               return a + b;
             });
             var avgOfDailyAvgs = sumOfAvgs / dailyAverages.length;
-            var A1C = (46.7 + avgOfDailyAvgs) / 28.7;
-            $scope.glucose.A1c = A1C;
+            $scope.glucose.A1c = (46.7 + avgOfDailyAvgs) / 28.7;
+
             //Daily Averages
             var testReadingsFor7Days = [];
             var data = _.filter(results, function (o) {
@@ -84,8 +82,8 @@
             var sumOfReadingsFor7Days = testReadingsFor7Days.reduce(function (a, b) {
               return a + b;
             });
-            var daily7 = sumOfReadingsFor7Days / testReadingsFor7Days.length;
-            $scope.glucose.weeklyAvg = daily7;
+            $scope.glucose.weeklyAvg = sumOfReadingsFor7Days / testReadingsFor7Days.length;
+
             //Fasting Averages
             var past72HoursFasting = [];
             var allFastingResults = _.filter(results, function (o) {
@@ -101,8 +99,8 @@
             var fastingAverages = _.sumBy(past72HoursFasting, function (item) {
               return item.bloodGlucose
             });
-            var fastingAvg = fastingAverages / past72HoursFasting.length;
-            $scope.glucose.fastingAvg = fastingAvg;
+            $scope.glucose.fastingAvg = fastingAverages / past72HoursFasting.length;
+
           });
       }
 
@@ -117,11 +115,15 @@
             console.log(data);
 
             for (var inj in data) {
-              console.log(data[inj]);
-              insulinUnits.push(data[inj].units);
-              if (data[inj].fastActing) {
-                fastActingUnits.push(data[inj].units);
+              //console.log(data[inj]);
+              var injDateTime = moment(data[inj].injectionDateTime);
+              if (injDateTime.isBetween(today, tomorrow)) {
+                insulinUnits.push(data[inj].units);
+                if (data[inj].fastActing) {
+                  fastActingUnits.push(data[inj].units);
+                }
               }
+
             }
             /* _.forEach(data, function(inj){
              /!* insulinUnits.push(inj.units);*!/
@@ -136,11 +138,8 @@
             $scope.insulin.fastActing = _.sum(fastActingUnits);
 
             $scope.insulin.longLasting = _.subtract($scope.insulin.units, $scope.insulin.fastActing);
-
-
-            console.info("I was ran");
-            console.log($scope.insulin.longLasting);
-            console.log($scope.insulin.units);
+            /* console.log($scope.insulin.longLasting);
+             console.log($scope.insulin.units);*/
           });
 
       }
