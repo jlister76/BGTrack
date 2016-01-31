@@ -2,20 +2,20 @@
   <div layout="column" class="md-padding md-whiteframe-z2" style="margin: 2rem; min-width: 360px">
     <h2>Meal Log</h2>
 
-    <form name="SS.meallogForm" novalidate ng-submit="SS.addNewMeal()" id="projectForm" class="md-padding">
+    <form name="meallogForm" novalidate ng-submit="addNewMeal()" id="projectForm" class="md-padding">
 
       <md-input-container><label for="description">Meal Name</label>
-        <input type="text" md-autofocus required id="description" name="description" ng-model="SS.newMeal.description"/>
-        <div ng-messages="SS.meallogForm.description.$error">
+        <input type="text" md-autofocus required id="description" name="description" ng-model="newMeal.description"/>
+        <div ng-messages="meallogForm.description.$error">
           <div ng-message="required">This is required.</div>
         </div>
       </md-input-container>
       <br/>
       <md-input-container><label for="carbcount">Carb Count</label>
-        <input type="text" required id="carbcount" name="carbcount" ng-model="SS.newMeal.carbCount"
+        <input type="text" required id="carbcount" name="carbcount" ng-model="newMeal.carbCount"
                ng-minlength="1"
                ng-pattern="/\d/"/>
-        <div ng-messages="SS.meallogForm.carbcount.$error">
+        <div ng-messages="meallogForm.carbcount.$error">
           <div ng-message="required">This is required.</div>
           <div ng-message="pattern">Please enter a numeric value.</div>
 
@@ -25,33 +25,34 @@
 
 
       <div>
-        <md-datepicker id="dateField" name="dateField" ng-model="SS.newMeal.mealDateTime" md-placeholder=""
+        <md-datepicker id="dateField" name="dateField" ng-model="newMeal.mealDateTime" md-placeholder=""
                        required class=""></md-datepicker>
-        <div class="" ng-messages="SS.meallogForm.dateField.$error">
+        <div class="" ng-messages="meallogForm.dateField.$error">
           <div ng-message="valid">The entered value is not a date!</div>
           <br/>
           <div ng-message="required">A date is required!</div>
         </div>
       </div>
 
-      <div ng-model="SS.newMeal.mealDateTime" ui-timepicker>Click to change the time: {{
-        SS.newMeal.mealDateTime | date:'shortTime' }}
+      <div ng-model="newMeal.mealDateTime" ui-timepicker>Click to change the time: {{
+        newMeal.mealDateTime | date:'shortTime' }}
       </div>
 
 
-      <div>{{SS.newMeal.mealDateTime | date:'medium'}}</div>
+      <div>{{newMeal.mealDateTime | date:'medium'}}</div>
       <md-input-container>
         <label for="ingredients">Ingredients</label>
-        <textarea id="ingredients" name="ingredients" ng-model="SS.newMeal.ingredients" columns="1" md-maxlength="150"
+        <textarea id="ingredients" name="ingredients" ng-model="newMeal.ingredients" columns="1" md-maxlength="150"
                   rows="5"></textarea>
       </md-input-container>
       </br>
 
-      <md-button type="submit" class="md-raised md-accent" ng-disabled="SS.meallogForm.$invalid"
+      <md-button type="submit" class="md-raised md-accent" ng-disabled="meallogForm.$invalid"
                  style="margin: 2rem 0;">
         Save
       </md-button>
 
     </form>
+    {{newMeal}}
   </div>
 </div>
