@@ -14,6 +14,8 @@
 
   <link rel="stylesheet" href="css/app.css">
 
+  <!--<script src="vendor/angular/angular.min.js"></script>
+  <script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>-->
   <style type="text/css">
     /**
      * Hide when Angular is not yet loaded and initialized
@@ -23,103 +25,14 @@
     }
   </style>
 </head>
+<!--ng-controller="SnapShotCtrl"-->
 
-
-<body flex layout="column" ng-app="bgTrackApp" ng-controller="SnapShotCtrl as SS"
+<body flex layout="column" flex-direction="column" ng-app="bgTrackApp"
       class="ng-cloak {xs: $mdMedia('xs'), sm: $mdMedia('sm'), md: $mdMedia('md'), lg: $mdMedia('lg')}"
-      style="display: flex; min-height: 100%; height: 100%;">
-<md-toolbar layout="row" layout-align="center center" class="md-padding md-hue-2">
-    <span>
-      <md-icon md-svg-src="img/noun_42681_cc.svg" style="color: #28fffd"></md-icon>
-      Blood Glucose Tracker </span>
-</md-toolbar>
+      style="display: flex; min-height: 100vh; height: 100vh;">
 
-<div layout style="border:none;">
-  <!--sidenav-->
-  <div layout="column" style="height: 100%; border:none;">
-    <md-sidenav class="no-select" md-component-id="left"
-                md-is-locked-open="$mdMedia('gt-sm')"
-                md-swipe-left="SS.onSwipe()"
-    style="background-color: #2196F3; color: ghostwhite">
-      <md-toolbar layout="column" layout-align="start end" hide-gt-sm class="md-hue-2">
-        <div layout-align="center center" class="md-padding closebox">
-          <md-icon hide-gt-sm ng-click="SS.close()"><i class="mdi mdi-close"></i></md-icon>
-        </div>
-      </md-toolbar>
+<main data-ui-view></main>
 
-      <div class="md-padding"><div layout="column" layout-align="start">
-        <header><h4 class="md-subhead">Weekly Average</h4></header>
-        <section layout layout-align="end end" class="md-padding">
-          <span class="md-title">{{SS.daily7 | number:0}}</span>
-          <div class="md-caption md-padding">ml/dL</div>
-        </section>
-        <md-divider></md-divider>
-      </div>
-      <div layout="column" layout-align="start">
-        <header><h4 class="md-subhead">Floating Fasting Average</h4></header>
-        <section layout layout-align="end end" class="md-padding">
-          <span class="md-title">{{SS.fastingAvg | number:0}}</span>
-          <div class="md-caption md-padding">ml/dL</div>
-        </section>
-        <md-divider></md-divider>
-      </div>
-
-      <div layout="column" layout-align="start">
-        <header><h4 class="md-subhead">Daily Carbs</h4></header>
-        <section layout layout-align="end end" class="md-padding">
-          <span class="md-title">36</span>
-          <div class="md-caption md-padding">grams/day</div>
-        </section>
-        <md-divider></md-divider>
-      </div>
-
-      <div layout="column" layout-align="start">
-        <header><h2 class="md-headline">Insulin</h2></header>
-
-        <h4 class="md-subhead">Fast-Acting</h4>
-        <section layout layout-align="end end" class="md-padding">
-          <span class="md-title">14</span>
-          <div class="md-caption md-padding">grams/day</div>
-        </section>
-        <md-divider></md-divider>
-        <h4 class="md-subhead">Long-Lasting</h4>
-        <section layout layout-align="end end" class="md-padding">
-          <span class="md-title">24</span>
-          <div class="md-caption md-padding">grams/day</div>
-        </section>
-        <md-divider></md-divider>
-        <footer>Daily Total Insulin Units
-          <section layout layout-align="end end" class="md-padding">
-            <span class="md-title">38</span>
-            <div class="md-caption md-padding">grams/day</div>
-          </section>
-        </footer>
-      </div>   </div>
-
-    </md-sidenav>
-  </div>
-  <!--sidenav-->
-  <div flex layout="column">
-    <nav layout-gt-sm="row" layout-align-gt-sm="end" layout layout-align="center center" style="border: none">
-
-      <md-button layout-align="start" hide-gt-sm ng-click="SS.toggleLeft()"><i class="mdi mdi-information-outline"></i>My
-        Info
-      </md-button>
-
-      <md-button ui-sref="selector"><i class="mdi mdi-plus-circle-outline"></i>Log Book</md-button>
-    </nav>
-    <div flex layout="column" ui-view style="border: none"></div>
-  </div>
-
-
-</div>
-<!-- footer -->
-<div layout="column" layout-align="center center"><footer layout="column" layout-align="center center" style="position: fixed; height:40px;">
-  <div layout layout-align="center center">
-    <p layout="column" layout-align="center center">BGTrack v1.0.0</p>
-  </div>
-</footer></div>
-<!-- footer -->
 
 <!-- <div flex layout class="md-padding" ui-view></div>-->
 
@@ -136,7 +49,7 @@
 <script src="vendor/angular-messages/angular-messages.min.js"></script>
 <script src="vendor/angular-material/angular-material.min.js"></script>
 
-<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.0/lodash.min.js"></script>
 <script src="vendor/jquery-timepicker-jt/jquery.timepicker.min.js"></script>
 <script src="vendor/angular-jquery-timepicker/src/timepickerdirective.min.js"></script>
@@ -144,9 +57,9 @@
 <script src="vendor/nvd3/build/nv.d3.min.js"></script>
 <script src="vendor/angular-nvd3/dist/angular-nvd3.min.js"></script>
 
+<script src="js/app.js"></script>
 <script src="js/services/lb-service.js"></script>
 <script src="js/lodashFactory.js"></script>
-<script src="js/app.js"></script>
 <script src="js/controllers/snapshot.js"></script>
 </body>
 </html>

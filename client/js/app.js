@@ -13,39 +13,44 @@
     ])
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
       $stateProvider
-        .state('/', {
+        .state('root', {
+          controller: 'SnapShotCtrl',
+          controllerAs: 'sS',
           url: '',
-          templateUrl: '../views/snapshot.tmpl.html',
-          controller: 'SnapShotCtrl',
-          controllerAs: 'SS'
+          templateUrl: '../views/main.tmpl.html'
         })
-        .state('selector', {
-          url: '/form/select',
-          templateUrl: '../views/formselector.html',
+        .state('root.new-meal', {
           controller: 'SnapShotCtrl',
-          controllerAs: 'SS'
-        })
-        .state('glucose-test', {
-          url: '/new/glucose-test',
-          templateUrl: '../views/form.tmpl.html',
-          controller: 'SnapShotCtrl',
-          controllerAs: 'SS'
-        })
-        .state('new-insulin-injection', {
-          url: '/new/insulin-injection',
-          templateUrl: '../views/insulin.form.tmpl.html',
-          controller: 'SnapShotCtrl',
-          controllerAs: 'SS'
-        })
-        .state('new-meal', {
+          controllerAs: 'sS',
+          parent: 'root',
           url: '/new/meal',
-          templateUrl: '../views/meallog.form.tmpl.html',
+          templateUrl: '../views/meallog.form.tmpl.html'
+        })
+        .state('root.selector', {
           controller: 'SnapShotCtrl',
-          controllerAs: 'SS'
+          controllerAs: 'sS',
+          parent: 'root',
+          url: '/form/select',
+          templateUrl: '../views/formselector.html'
+
+        })
+        .state('root.glucose-test', {
+          controller: 'SnapShotCtrl',
+          controllerAs: 'sS',
+          parent: 'root',
+          url: '/new/glucose-test',
+          templateUrl: '../views/glucose-test.form.tmpl.html'
+        })
+        .state('root.new-insulin-injection', {
+          controller: 'SnapShotCtrl',
+          controllerAs: 'sS',
+          parent: 'root',
+          url: '/new/insulin-injection',
+          templateUrl: '../views/insulin.form.tmpl.html'
         });
 
       /*$locationProvider.html5Mode({ enabled: true, requireBase: false });*/
-      $urlRouterProvider.otherwise('/');
+      $urlRouterProvider.otherwise('root');
     }])
     .config(function($mdThemingProvider){
       $mdThemingProvider.theme('default')

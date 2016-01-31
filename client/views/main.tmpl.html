@@ -1,0 +1,155 @@
+<md-toolbar layout="row" layout-align="center center" class="md-padding md-hue-2">
+    <span>
+      <md-icon md-svg-src="img/noun_42681_cc.svg" style="color: #28fffd"></md-icon>
+      Blood Glucose Tracker </span>
+</md-toolbar>
+<div layout style="border:none;">
+  <!--sidenav-->
+  <div layout="column" style="height: 100%; border:none;">
+    <md-sidenav class="no-select" md-component-id="left"
+                md-is-locked-open="$mdMedia('gt-sm')"
+                md-swipe-left="onSwipe()"
+                style="background-color: #2196F3; color: ghostwhite">
+      <md-toolbar layout="column" layout-align="start end" hide-gt-sm class="md-hue-2">
+        <div layout-align="center center" class="md-padding closebox">
+          <md-icon hide-gt-sm ng-click="close()"><i class="mdi mdi-close"></i></md-icon>
+        </div>
+      </md-toolbar>
+
+      <div class="md-padding">
+        <div layout="column" layout-align="start">
+          <header><h4 class="md-subhead">Weekly Average</h4></header>
+          <section layout layout-align="end end" class="md-padding">
+            <span class="md-title">{{sS.glucose.weeklyAvg | number:0}}</span>
+            <div class="md-caption md-padding">ml/dL</div>
+          </section>
+          <md-divider></md-divider>
+        </div>
+        <div layout="column" layout-align="start">
+          <header><h4 class="md-subhead">Floating Fasting Average</h4></header>
+          <section layout layout-align="end end" class="md-padding">
+            <span class="md-title">{{sS.glucose.fastingAvg | number:0}}</span>
+            <div class="md-caption md-padding">ml/dL</div>
+          </section>
+          <md-divider></md-divider>
+        </div>
+
+        <div layout="column" layout-align="start">
+          <header><h4 class="md-subhead">Daily Carbs</h4></header>
+          <section layout layout-align="end end" class="md-padding">
+            <span class="md-title">{{sS.carb.count}}</span>
+            <div class="md-caption md-padding">grams/day</div>
+          </section>
+          <md-divider></md-divider>
+        </div>
+
+        <div layout="column" layout-align="start">
+          <header><h2 class="md-headline">Insulin</h2></header>
+
+          <h4 class="md-subhead">Fast-Acting</h4>
+          <section layout layout-align="end end" class="md-padding">
+            <span class="md-title">{{sS.insulin.fastActing}}</span>
+            <div class="md-caption md-padding">grams/day</div>
+          </section>
+          <md-divider></md-divider>
+          <h4 class="md-subhead">Long-Lasting</h4>
+          <section layout layout-align="end end" class="md-padding">
+            <span class="md-title">{{sS.insulin.longLasting}}</span>
+            <div class="md-caption md-padding">grams/day</div>
+          </section>
+          <md-divider></md-divider>
+          <footer>Daily Total Insulin Units
+            <section layout layout-align="end end" class="md-padding">
+              <span class="md-title">{{sS.insulin.units}}</span>
+              <div class="md-caption md-padding">grams/day</div>
+            </section>
+          </footer>
+        </div>
+      </div>
+
+    </md-sidenav>
+  </div>
+  <!--/sidenav-->
+  <div flex layout="column">
+    <!-- nav menu -->
+    <nav layout-gt-sm="row" layout-align-gt-sm="end" layout layout-align="center center" style="border: none">
+
+      <md-button layout-align="start" hide-gt-sm ng-click="toggleLeft()"
+                 style="border-bottom: dotted thin #c2c2c2; line-height: .8rem; padding: .5rem;"><i
+        class="mdi mdi-information-outline" style="font-size:34px;"></i><br/>My
+        Info
+      </md-button>
+      <md-button data-ui-sref="root.selector"
+                 style="border-bottom: dotted thin #c2c2c2; line-height: .8rem; padding: .5rem;"><i
+        class="mdi mdi-book-open-variant" style="font-size:34px;"></i><span><br/>Log Book</span></md-button>
+
+    </nav>
+
+    <section flex layout="column" class="md-padding" ui-view style="border: none; min-height: 100vh;">
+      <div layout="row" style="background-color: #fafafa; color: dimgrey; min-height: 100vh; ">
+
+        <!--  <section flex="80" layout="column" class="">
+           <h3>Select custom time range</h3>
+            <div layout layout-align-gt-sm="space-around end">
+              <form name="daterange" flex layout-align-gt-sm="space-around end">
+                <div flex layout="column" layout-align="space-around center" layout-gt-sm="row"
+                     class="md-padding">
+
+                  <div layout="column" layout-align="center" style="border: none;margin: 1.5rem;">
+                    <label for="startdatefield">Beginning Date:</label>
+                    <md-datepicker id="startdatefield" name="startdatefield" ng-model="snapShotStart" md-placeholder=""
+                                   required
+                                   md-max-date="snapShotEnd"
+                                   class=""></md-datepicker>
+                    <div class="validation-messages" ng-messages="daterange.startdatefield.$error">
+                      <div ng-message="valid">The entered value is not a date!</div>
+                      <br/>
+                      <div ng-message="required">A date is required!</div>
+                    </div>
+                  </div>
+
+                  <div layout="column" layout-align="center" style="border: none; margin: 1.5rem;">
+                    <label for="enddatefield">End Date:</label>
+                    <md-datepicker id="enddatefield" name="enddatefield" ng-model="snapShotEnd" md-placeholder=""
+                                   required
+                                   md-min-date="snapShotStart"
+                                   class=""></md-datepicker>
+                    <div class="validation-messages" ng-messages="daterange.enddatefield.$error">
+                      <div ng-message="valid">The entered value is not a date!</div>
+                      <br/>
+                      <div ng-message="required">A date is required!</div>
+                    </div>
+                  </div>
+
+                </div>
+              </form>
+            </div>
+          </section>-->
+
+        <div>
+          <h4>Time Range</h4>
+          <md-input-container>
+            <md-select ng-model="timeSpan" aria-label="label">
+              <md-option ng-repeat="timespan in range">
+                {{timespan}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+        </div>
+
+      </div>
+
+
+    </section>
+  </div>
+
+
+</div>
+<!-- footer -->
+<footer flex layout="column" layout-align="center center" style="height:40px;">
+  <div layout layout-align="center center">
+    <p layout="column" layout-align="center center">BGTrack v1.0.0</p>
+  </div>
+</footer>
+<!-- footer -->
