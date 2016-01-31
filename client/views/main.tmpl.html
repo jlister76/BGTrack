@@ -1,11 +1,11 @@
 <md-toolbar layout="row" layout-align="center center" class="md-padding md-hue-2">
-    <span>
-      <md-icon md-svg-src="img/noun_42681_cc.svg" style="color: #28fffd"></md-icon>
+    <span style="color: white;">
+      <md-icon md-svg-src="img/noun_42681_cc.svg" style="color: #28fffd;"></md-icon>
       Blood Glucose Tracker </span>
 </md-toolbar>
 <div layout style="border:none;">
   <!--sidenav-->
-  <div layout="column" style="height: 100%; border:none;">
+  <div layout="column" style="background-color: #2196F3; border:none;">
     <md-sidenav class="no-select" md-component-id="left"
                 md-is-locked-open="$mdMedia('gt-sm')"
                 md-swipe-left="onSwipe()"
@@ -19,9 +19,8 @@
       <div class="md-padding">
         <div layout="column" layout-align="start" class="md-padding">
           <header><span class="md-title">A1c</span></header>
-          <section layout layout-align="end end" class="class=" md-padding
-          "">
-          <span class="md-title">{{glucose.A1c | number:1}}</span>
+          <section layout layout-align="end end" class="md-padding">
+            <span class="md-headline" style="color: #fff000">{{glucose.A1c | number:1}}</span>
             <div class="md-caption md-padding">ml/dL</div>
           </section>
           <md-divider></md-divider>
@@ -29,9 +28,9 @@
         <div layout="column" layout-align="start" class="md-padding">
           <div layout layout-align="space-between">
             <header><span class="md-subhead">In-Target</span></header>
-            <span>Yes</span></div>
+            <span style="color: #80ff05;">Yes</span></div>
           <section layout layout-align="end end" class="">
-            &nbsp;<span class="md-title"> -- </span>
+            &nbsp;<span class="md-headline"> -- </span>
             <div class="md-caption md-padding">day(s)</div>
           </section>
           <md-divider></md-divider>
@@ -39,7 +38,7 @@
         <div layout="column" layout-align="start" class="md-padding">
           <header><span class="md-subhead">Fasting Average&nbsp;<small>(float)</small></span></header>
           <section layout layout-align="end end" class="md-padding">
-            <span class="md-title">{{glucose.fastingAvg | number:0}}</span>
+            <span class="md-headline" style="color: #80ff05;">{{glucose.fastingAvg | number:0}}</span>
             <div class="md-caption md-padding">ml/dL</div>
           </section>
           <md-divider></md-divider>
@@ -133,17 +132,11 @@
             </div>
           </section>-->
 
-        <div layout="row" layout-align="start start" style="border: solid thin blue;">
-          <!--DEMO CODE <md-select ng-model="selectedUser">
-            <md-option ng-value="user" ng-repeat="user in users">{{ user.name }}</md-option>
-            </md-select> DEMO CODE-->
-          <span style="margin: 1.8rem;">My glucose history within </span>&nbsp;
-          <md-select ng-model="sS.span" placeholder="Glucose History">
-            <md-option ng-value="timespan" ng-repeat="timespan in timespans">
-              {{timespan}}
-            </md-option>
+        <div layout="row" layout-align="center center" style="padding: 0; border: none;">
 
-          </md-select>
+          <div layout ng-model="timeSpan" ng-value="timespan" ng-repeat="timespan in timespans">
+            <md-button class="md-warn" style="border: solid thin #e2e2e2; border-radius: 5%">{{timespan}}</md-button>
+          </div>
 
         </div>
         <div flex layout>{{sS.span}}</div>
@@ -156,7 +149,7 @@
 
 </div>
 <!-- footer -->
-<footer flex layout="column" layout-align="center center" style="height:40px;">
+<footer flex layout="column" layout-align="center center" style="height:40px; border:none;">
   <div layout layout-align="center center">
     <p layout="column" layout-align="center center">BGTrack v1.0.0</p>
   </div>
