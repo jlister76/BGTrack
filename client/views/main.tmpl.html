@@ -82,12 +82,15 @@
 
       <md-button layout-align="start" hide-gt-sm ng-click="toggleLeft()"
                  style="border-bottom: dotted thin #c2c2c2; line-height: .8rem; padding: .5rem;"><i
-        class="mdi mdi-information-outline" style="font-size:34px;"></i><br/>My
-        Info
+        class="mdi mdi-information-outline" style="font-size:24px;"></i><br/><span>Stats</span>
       </md-button>
       <md-button data-ui-sref="selector"
                  style="border-bottom: dotted thin #c2c2c2; line-height: .8rem; padding: .5rem;"><i
-        class="mdi mdi-book-open-variant" style="font-size:34px;"></i><span><br/>Log Book</span></md-button>
+        class="mdi mdi-book-open-variant" style="font-size:24px;"></i><span><br/>Log Book</span></md-button>
+      <md-button layout-align="start"
+                 style="border-bottom: dotted thin #c2c2c2; line-height: .8rem; padding: .5rem;"><i
+        class="mdi mdi-settings" style="font-size:24px;"></i><br/><span>Settings</span>
+      </md-button>
 
     </nav>
 
@@ -132,16 +135,77 @@
             </div>
           </section>-->
 
-        <div layout="row" layout-align="center center" style="padding: 0; border: none;">
 
-          <div layout ng-model="timeSpan" ng-value="timespan" ng-repeat="timespan in timespans">
-            <md-button class="md-warn" style="border: solid thin #e2e2e2; border-radius: 5%">{{timespan}}</md-button>
+        <div layout layout-align="center center">
+          <md-card flex-sm="30" flex-gt-sm="25" layout-align="" style="min-width:180px">
+            <div layout layout-align="end end" style="padding:.5rem; background-color: #e2e2e2; border: none">
+              <div layout>
+                <md-icon><i class="mdi mdi-checkbox-blank-circle" style="color: #75aa44;"></i></md-icon>
+              </div>
+            </div>
+            <div layout="column" layout-align="start center">
+              <md-card-title class="md-title" style="margin: 2rem;">
+                <span>Previous</span>
+              </md-card-title>
+              <md-card-content layout layout-align="end end">
+                <div class="md-display-2"> {{glucose.prev.bloodGlucose}}</div>
+                <span>ml/dL</span>
+              </md-card-content>
+            </div>
+            <md-card-footer>
+              <div>{{glucose.prev.testDateTime | date:'short'}}</div>
+            </md-card-footer>
+          </md-card>
+          <div layout="column" layout-align="space-between stretch">
+            <div>
+              <md-list layout-fill>
+                <md-list-item layout-align="space-between end" class="md-padding">
+                  <md-subhead>Deviation</md-subhead>
+                  <md-list-content>{{glucose.current.bloodGlucose - glucose.prev.bloodGlucose}}</md-list-content>
+                </md-list-item>
+                <md-list-item layout="column" layout-align="center center">
+                  <md-list-content>
+                    <div>
+                      <md-icon><i class="mdi mdi-trending-down" style="transform: scale(2)"></i></md-icon>
+                    </div>
+                  </md-list-content>
+                </md-list-item>
+              </md-list>
+            </div>
+
           </div>
+          <md-card flex-sm="30" flex-gt-sm="25" layout-align="center stretch" style="min-width:180px">
+            <div layout layout-align="end end" style="padding:.5rem; background-color: #e2e2e2; border: none">
+              <div layout>
+                <md-icon><i class="mdi mdi-checkbox-blank-circle" style="color: #75aa44;"></i></md-icon>
+              </div>
+            </div>
+            <div layout="column" layout-align="center center">
+              <md-card-title class="md-title" style="margin: 2rem;">
+                <span>Current</span>
+              </md-card-title>
+              <md-card-content layout layout-align="end end">
+                <div class="md-display-2"> {{glucose.current.bloodGlucose}}</div>
+                <span>ml/dL</span>
+              </md-card-content>
+            </div>
+            <md-card-footer>
+              <div>{{glucose.current.testDateTime | date:'short'}}</div>
+            </md-card-footer>
+          </md-card>
+          <div flex="30" layout-end style="border: none;">
 
+            <div layout="column" layout-align="end end" style="padding: 0; border: none; min-width:250px;">
+
+              <md-list layout ng-model="timeSpan" ng-value="timespan" ng-repeat="timespan in timespans">
+                <md-list-content>
+                  <md-button class="md-warn" style="border: none;">{{timespan}}</md-button>
+                </md-list-content>
+              </md-list>
+
+            </div>
+          </div>
         </div>
-        <div>{{glucose.current | json}}</div>
-        <div>{{glucose.prev | json}}</div>
-        <div flex layout>{{sS.span}}</div>
       </div>
 
 
