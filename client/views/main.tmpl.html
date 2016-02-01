@@ -139,9 +139,28 @@
           </div>
 
         </div>
-        <div>{{glucose.current | json}}</div>
-        <div>{{glucose.prev | json}}</div>
-        <div flex layout>{{sS.span}}</div>
+        <div layout>
+          <md-card flex="25">
+            <md-card-title class="md-title">
+              <div>Most Recent</div>
+            </md-card-title>
+            <md-card-content layout-align="center center" class="md-subhead">
+              <div> {{glucose.current.bloodGlucose}}</div>
+            </md-card-content>
+            <md-card-footer>
+              <div>{{glucose.current.testDateTime | date:'short'}}</div>
+            </md-card-footer>
+          </md-card>
+          <md-card>
+            <md-card-title>
+              <div> {{glucose.prev.testDateTime | date:'short'}}</div>
+            </md-card-title>
+            <md-card-content>
+              <div> {{glucose.prev.bloodGlucose}}</div>
+            </md-card-content>
+          </md-card>
+
+        </div>
       </div>
 
 
