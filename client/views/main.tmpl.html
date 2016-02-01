@@ -137,7 +137,7 @@
 
 
         <div layout layout-align="center center">
-          <md-card flex-sm="30" flex-gt-sm="25" layout-align="" style="min-width:180px">
+          <md-card flex-sm="30" flex-gt-sm="25" layout-align="" style="">
             <div layout layout-align="end end" style="padding:.5rem; background-color: #e2e2e2; border: none">
               <div layout-fill="">{{glucose.prev.testDateTime | date:'short'}}</div>
               <div layout>
@@ -173,7 +173,7 @@
             </div>
 
           </div>
-          <md-card flex-sm="30" flex-gt-sm="25" layout-align="center stretch" style="min-width:180px">
+          <md-card flex-sm="30" flex-gt-sm="25" layout-align="center stretch" style="">
             <div layout layout-align="end end" style="padding:.5rem; background-color: #e2e2e2; border: none">
               <div layout-fill="">{{glucose.current.testDateTime | date:'short'}}</div>
               <div layout>
@@ -192,7 +192,7 @@
           </md-card>
           <div flex="30" layout-end style="border: none;">
 
-            <div layout="column" layout-align="end end" style="padding: 0; border: none; min-width:150px;">
+            <div layout="column" layout-align="end end" style="padding: 0; border: none;">
 
               <md-list layout ng-model="timeSpan" ng-value="timespan" ng-repeat="timespan in timespans">
                 <md-list-content>
