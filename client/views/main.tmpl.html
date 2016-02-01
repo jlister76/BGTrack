@@ -1,4 +1,4 @@
-<md-toolbar layout="row" layout-align="center center" class="md-padding md-hue-2">
+<md-toolbar layout="row" layout-align="center center" class="md-padding" style="background-color: #333">
     <span style="color: white;">
       <md-icon md-svg-src="img/noun_42681_cc.svg" style="color: #28fffd;"></md-icon>
       Blood Glucose Tracker </span>
@@ -157,10 +157,11 @@
           <div layout="column" layout-align="space-between stretch">
             <div>
               <md-list layout-fill>
-                <md-list-item layout-align="space-between end" class="md-padding">
-                  <md-subhead>Deviation</md-subhead>
+                <md-list-item layout="column" layout-align="space-between end" class="md-padding">
+                  <md-subhead>Variance</md-subhead>
                   <md-list-content>{{glucose.current.bloodGlucose - glucose.prev.bloodGlucose}}</md-list-content>
                 </md-list-item>
+
                 <md-list-item layout="column" layout-align="center center">
                   <md-list-content>
                     <div>
@@ -191,16 +192,19 @@
           </md-card>
           <div flex="30" layout-end style="border: none;">
 
-            <div layout="column" layout-align="end end" style="padding: 0; border: none; min-width:250px;">
+            <div layout="column" layout-align="end end" style="padding: 0; border: none; min-width:150px;">
 
               <md-list layout ng-model="timeSpan" ng-value="timespan" ng-repeat="timespan in timespans">
                 <md-list-content>
                   <md-button class="md-warn" style="border: none;">{{timespan}}</md-button>
                 </md-list-content>
               </md-list>
-
             </div>
           </div>
+        </div>
+        <!--NVD3 -->
+        <div flex="60" class="md-padding" layout style="border:dotted thin #e5e5e5;">
+          <nvd3 options="options" data="data"></nvd3>
         </div>
       </div>
 
@@ -211,7 +215,8 @@
 
 </div>
 <!-- footer -->
-<footer flex layout="column" layout-align="center center" style="height:40px; border:none;">
+<footer flex layout="column" layout-align="center center"
+        style="height:40px; border:none; background-color: #333; color: #c2ccd1;">
   <div layout layout-align="center center">
     <p layout="column" layout-align="center center">BGTrack v1.0.0</p>
   </div>
