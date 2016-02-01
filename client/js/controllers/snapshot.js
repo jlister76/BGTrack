@@ -42,9 +42,31 @@
           });
       }
 
+      function mostCurrent() {
+        GlucoseTest
+          .find({
+            filter: {
+              order: 'testDateTime DESC',
+              limit: 2
+            }
+          })
+          .$promise
+          .then(function (data) {
+            console.info(data);
+            console.info(typeof(data));
+
+            $scope.glucose.current = data[0];
+            $scope.glucose.prev = data[1];
+            console.info($scope.glucose.current, $scope.glucose.prev);
+
+
+          })
+      }
+
+      mostCurrent();
       function glucoseCalculations() {
         GlucoseTest
-          .find()
+          .find({order: 'testDateTime'})
           .$promise
           .then(function (results) {
             //A1c
