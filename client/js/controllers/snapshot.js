@@ -2,7 +2,7 @@
   'use strict';
   angular
     .module('bgTrackApp')
-    .controller('SnapShotCtrl', ['$scope', '$mdMedia', '$mdSidenav', '$log', 'GlucoseTest', '_', '$mdToast', 'InsulinInjection', 'Meal', function ($scope, $mdMedia, $mdSidenav, $log, GlucoseTest, _, $mdToast, InsulinInjection, Meal) {
+    .controller('SnapShotCtrl', ['$scope', '$mdMedia', '$mdSidenav', '$log', 'GlucoseTest', '_', '$mdToast', 'InsulinInjection', 'Meal', '$interval', '$timeout', function ($scope, $mdMedia, $mdSidenav, $log, GlucoseTest, _, $mdToast, InsulinInjection, Meal, $interval, $timeout) {
       /*var $scope = this;*/
 
       var today = moment().startOf('day');
@@ -11,7 +11,7 @@
 
       $scope.timespans = ['Most Recent', '7 days', '14 days', '30 days', '90 days'];
       $scope.carb = $scope.carb || {dailyCount: null, total: null};
-      $scope.glucose = $scope.glucose || {fastingAvg: null};
+      $scope.glucose = $scope.glucose || {fastingAvg: null, current: {bloodGlucose: 150}};
       $scope.insulin = $scope.insulin || {units: null, longLasting: null};
 
 
@@ -250,63 +250,63 @@
 
       };
 
-      //NVD3 DEMO
+      //CHARTIST DEMO
 
-      $scope.options = {
-        chart: {
-          type: 'discreteBarChart',
-          width: 600,
-          height: 450,
-          margin: {
-            top: 20,
-            right: 20,
-            bottom: 50,
-            left: 55
-          },
-          x: function (d) {
-            return d.label;
-          },
-          y: function (d) {
-            return d.value + (1e-10);
-          },
-          showValues: true,
-          valueFormat: function (d) {
-            return d3.format(',.4f')(d);
-          },
-          duration: 500,
-          xAxis: {
-            axisLabel: 'X Axis'
-          },
-          yAxis: {
-            axisLabel: 'Y Axis',
-            axisLabelDistance: -10
-          }
-        }
+
+      $scope.barOptions = {
+        seriesBarDistance: 15
       };
 
-      $scope.data = [
-        {
-          key: "Cumulative Return",
-          values: [
-            {
-              "label": "Previous",
-              "value": 91
-            },
-            {
-              "label": "Current",
-              "value": 108
-            },
-            {
-              "label": "Weekly Avg.",
-              "value": $scope.glucose.weeklyAvg
-            },
-            {
-              "label": "D",
-              "value": 196.45946739256
+      $scope.barResponsiveOptions = [
+        ['screen and (min-width: 901px) and (max-width: 1024px)', {
+          seriesBarDistance: 10,
+          axisX: {
+            labelInterpolationFnc: function (value) {
+              return value;
             }
-          ]
+          }
+        }],
+        ['screen and (max-width: 900px)', {
+          seriesBarDistance: 5,
+          axisX: {
+            labelInterpolationFnc: function (value) {
+              return value[0];
+            }
+          }
+        }]
+      ];
+
+      function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+      }
+
+      $scope.a = 42;
+      $scope.b = 50;
+      // line chart
+      $scope.lineData = {
+        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        series: [
+          /*[0, 1, 2, 4, 7, 6, 9, 10, 8, 10, 14, 13, 16, 14, 17, 19, 20, 31, 32, 26, 36, 28, 31, 40, 26, 26, 43, 47, 55, 30],
+           [0, 1, 2, 4, 4, 6, 6, 13, 9, 10, 16, 18, 21, 16, 16, 16, 31, 17, 27, 23, 31, 29, 35, 39, 30, 32, 26, 43, 51, 46],
+           [0, 1, 3, 4, 6, 5, 11, 9, 11, 11, 13, 15, 14, 22, 20, 15, 31, 27, 25, 25, 36, 30, 37, 29, 29, 39, 40, 49, 34, 35],
+           [0, 1, 3, 5, 7, 5, 9, 9, 10, 17, 13, 21, 14, 16, 23, 23, 25, 17, 24, 34, 27, 39, 33, 45, 47, 32, 40, 36, 49, 32],*/
+          [$scope.glucose.current.bloodGlucose, 24, 31, 29, $scope.a]
+        ]
+      },
+      {
+        fullWidth: true,
+        chartPadding: {
+          right: 40
         }
-      ]
+      },
+
+        $scope.lineOptions = {
+          axisX: {
+            labelInterpolationFnc: function (value) {
+              return value;
+            }
+        }
+        };
 
     }]);//EOC
 

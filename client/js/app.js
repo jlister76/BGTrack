@@ -9,7 +9,7 @@
       'ngMaterial',
       'ngMessages',
       'ui.timepicker',
-      'nvd3'
+      'angular-chartist'
     ])
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
       $stateProvider

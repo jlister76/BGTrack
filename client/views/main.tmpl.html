@@ -18,23 +18,13 @@
 
       <div class="md-padding">
         <div layout="column" layout-align="start" class="md-padding">
-          <header><span class="md-title">A1c</span></header>
-          <section layout layout-align="end end" class="md-padding">
-            <span class="md-headline" style="color: #fff000">{{glucose.A1c | number:1}}</span>
-            <div class="md-caption md-padding">ml/dL</div>
-          </section>
+          <div layout class="md-padding" layout-align="space-around">
+            <header><span class="md-display-3">A1c</span></header>
+            <div class="md-display-2" style="color: #fff000">{{glucose.A1c | number:1}}</div>
+          </div>
           <md-divider></md-divider>
         </div>
-        <div layout="column" layout-align="start" class="md-padding">
-          <div layout layout-align="space-between">
-            <header><span class="md-subhead">In-Target</span></header>
-            <span style="color: #80ff05;">Yes</span></div>
-          <section layout layout-align="end end" class="">
-            &nbsp;<span class="md-headline"> -- </span>
-            <div class="md-caption md-padding">day(s)</div>
-          </section>
-          <md-divider></md-divider>
-        </div>
+
         <div layout="column" layout-align="start" class="md-padding">
           <header><span class="md-subhead">Fasting Average&nbsp;<small>(float)</small></span></header>
           <section layout layout-align="end end" class="md-padding">
@@ -52,7 +42,7 @@
             <header><span class="md-subhead">Fast Acting</span></header>
             <section layout layout-align="end end" class="">
               <span class="md-title">{{insulin.fastActing}}</span>
-              <div class="md-caption md-padding">grams/day</div>
+              <div class="md-caption md-padding">units</div>
             </section>
             <md-divider></md-divider>
           </div>
@@ -60,14 +50,14 @@
             <header><span class="md-subhead">Long Lasting</span></header>
             <section layout layout-align="end end" class="">
               <span class="md-title">{{insulin.longLasting}}</span>
-              <div class="md-caption md-padding">grams/day</div>
+              <div class="md-caption md-padding">units</div>
             </section>
             <md-divider></md-divider>
           </div>
           <footer>Daily Total Insulin Units
             <section layout layout-align="end end" class="md-padding">
               <span class="md-title">{{insulin.units}}</span>
-              <div class="md-caption md-padding">grams/day</div>
+              <div class="md-caption md-padding">units</div>
             </section>
           </footer>
         </div>
@@ -138,26 +128,29 @@
 
         <div layout layout-align="center center">
           <md-card flex-sm="30" flex-gt-sm="25" layout-align="" style="">
-            <div layout layout-align="end end" style="padding:.5rem; background-color: #e2e2e2; border: none">
-              <div layout-fill="">{{glucose.prev.testDateTime | date:'short'}}</div>
-              <div layout>
-                <md-icon><i class="mdi mdi-checkbox-blank-circle" style="color: #75aa44;"></i></md-icon>
+            <div layout layout-align="space-between end"
+                 style="padding:.5rem; background-color: #ababab; color:white; border: none">
+              <span>Fasting</span>
+              <div layout layout-align="center end">
+                <span>Previous</span>
               </div>
             </div>
             <div layout="column" layout-align="start center">
-              <md-card-title class="md-title" style="margin: 2rem;">
-                <span>Previous</span>
-              </md-card-title>
               <md-card-content layout layout-align="end end">
-                <div class="md-display-2"> {{glucose.prev.bloodGlucose}}</div>
-                <span>ml/dL</span>
+                <md-icon><i class="mdi mdi-checkbox-blank-circle" style="color: #75aa44;"></i></md-icon>
+                &nbsp;
+                <div><span class="md-display-2">{{glucose.prev.bloodGlucose}}</span> <span>ml/dL</span></div>
+
               </md-card-content>
+              <md-footer>
+                <div layout-fill="">{{glucose.prev.testDateTime | date:'medium'}}</div>
+              </md-footer>
             </div>
           </md-card>
           <div layout="column" layout-align="space-between stretch">
             <div>
               <md-list layout-fill>
-                <md-list-item layout="column" layout-align="space-between end" class="md-padding">
+                <md-list-item layout="column" layout-align="space-between center" class="md-padding">
                   <md-subhead>Variance</md-subhead>
                   <md-list-content>{{glucose.current.bloodGlucose - glucose.prev.bloodGlucose}}</md-list-content>
                 </md-list-item>
@@ -174,20 +167,26 @@
 
           </div>
           <md-card flex-sm="30" flex-gt-sm="25" layout-align="center stretch" style="">
-            <div layout layout-align="end end" style="padding:.5rem; background-color: #e2e2e2; border: none">
-              <div layout-fill="">{{glucose.current.testDateTime | date:'short'}}</div>
-              <div layout>
-                <md-icon><i class="mdi mdi-checkbox-blank-circle" style="color: #75aa44;"></i></md-icon>
+            <div layout layout-align="space-between end" style="padding:.5rem; background-color: #ababab; border: none">
+              <span>
+                <span>{{glucose.tag}}</span>
+              </span>
+              <div layout layout-align="end end">
+                <span style="color:white;">Current</span>
+
               </div>
             </div>
             <div layout="column" layout-align="start center">
-              <md-card-title class="md-title" style="margin: 2rem;">
-                <span>Current</span>
-              </md-card-title>
               <md-card-content layout layout-align="end end">
-                <div class="md-display-2"> {{glucose.current.bloodGlucose}}</div>
-                <span>ml/dL</span>
+                <md-icon><i class="mdi mdi-checkbox-blank-circle" style="color: #75aa44; font-size:22px;"></i></md-icon>
+                &nbsp;
+                <div><span class="md-display-2">{{glucose.current.bloodGlucose}}</span>
+                  <span>ml/dL</span>
+                </div>
               </md-card-content>
+              <md-footer>
+                <div layout-fill="">{{glucose.current.testDateTime | date:'medium'}}</div>
+              </md-footer>
             </div>
           </md-card>
           <div flex="30" layout-end style="border: none;">
@@ -202,10 +201,17 @@
             </div>
           </div>
         </div>
-        <!--NVD3 -->
-        <div flex="60" class="md-padding" layout style="border:dotted thin #e5e5e5;">
-          <nvd3 options="options" data="data"></nvd3>
+        <!--Chartist -->
+
+
+        <div class="md-padding" layout layout style="border:dotted thin #e5e5e5;">
+
+          <chartist flex="33" class="ct-chart " chartist-data="lineData" chartist-chart-type="Bar"
+                    chartist-chart-options="lineOptions" chartist-responsive-options="barResponsiveOptions"></chartist>
         </div>
+
+
+        <!--End of chart -->
       </div>
 
 

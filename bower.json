@@ -28,6 +28,8 @@
     "mdi": "~1.4.57",
     "lodash": "~4.0.1",
     "moment": "~2.11.1",
-    "what-input": "~1.1.4"
+    "what-input": "~1.1.4",
+    "chartist": "~0.9.5",
+    "angular-chartist.js": "~3.3.13"
   }
 }

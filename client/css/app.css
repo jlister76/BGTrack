@@ -44,3 +44,7 @@ hr {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
+
+/*.ct-chart .ct-label {
+  font-size: 1.4rem;
+}*/
