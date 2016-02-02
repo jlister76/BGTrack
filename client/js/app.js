@@ -35,7 +35,9 @@
           controller: 'SnapShotCtrl',
           parent: 'root',
           url: '/new/glucose-test',
-          templateUrl: '../views/glucose-test.form.tmpl.html'
+          templateUrl: '../views/glucose-test.form.tmpl.html',
+          redirectTo: 'root'
+
         })
         .state('new-insulin-injection', {
           controller: 'SnapShotCtrl',

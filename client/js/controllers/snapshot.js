@@ -2,7 +2,7 @@
   'use strict';
   angular
     .module('bgTrackApp')
-    .controller('SnapShotCtrl', ['$scope', '$mdMedia', '$mdSidenav', '$log', 'GlucoseTest', '_', '$mdToast', 'InsulinInjection', 'Meal', '$interval', '$timeout', function ($scope, $mdMedia, $mdSidenav, $log, GlucoseTest, _, $mdToast, InsulinInjection, Meal, $interval, $timeout) {
+    .controller('SnapShotCtrl', ['$scope', '$mdMedia', '$mdSidenav', '$log', 'GlucoseTest', '_', '$mdToast', 'InsulinInjection', 'Meal', '$state', function ($scope, $mdMedia, $mdSidenav, $log, GlucoseTest, _, $mdToast, InsulinInjection, Meal, $state) {
       /*var $scope = this;*/
 
       var today = moment().startOf('day');
@@ -231,8 +231,11 @@
             $scope.newTestResult = '';
             $scope.glucoseTestForm.result.$setPristine();
             $('.focus').focus();
+            mostCurrent();
             glucoseCalculations();
-            showCustomToast()
+            showCustomToast();
+            $state.go('root');
+
           })
 
       };
