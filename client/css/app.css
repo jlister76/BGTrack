@@ -48,3 +48,7 @@ hr {
 /*.ct-chart .ct-label {
   font-size: 1.4rem;
 }*/
+line.ct-bar {
+  stroke-width: 1rem !important;
+  stroke: rgba(0, 176, 255, 0.51) !important;
+}

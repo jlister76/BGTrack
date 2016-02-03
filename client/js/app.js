@@ -13,41 +13,46 @@
     ])
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
       $stateProvider
-        .state('root', {
+        .state('/', {
           controller: 'SnapShotCtrl',
           url: '',
           templateUrl: '../views/main.tmpl.html'
         })
+        .state('snapshot', {
+          controller: 'SnapShotCtrl',
+          url: '/snapshot',
+          templateUrl: '../views/main.tmpl.html'
+        })
         .state('new-meal', {
           controller: 'SnapShotCtrl',
-          parent: 'root',
+          parent: '/',
           url: '/new/meal',
           templateUrl: '../views/meallog.form.tmpl.html'
         })
         .state('selector', {
           controller: 'SnapShotCtrl',
-          parent: 'root',
+          parent: '/',
           url: '/form/select',
           templateUrl: '../views/formselector.html'
 
         })
         .state('glucose-test', {
           controller: 'SnapShotCtrl',
-          parent: 'root',
+          parent: '/',
           url: '/new/glucose-test',
           templateUrl: '../views/glucose-test.form.tmpl.html',
-          redirectTo: 'root'
+          redirectTo: '/'
 
         })
         .state('new-insulin-injection', {
           controller: 'SnapShotCtrl',
-          parent: 'root',
+          parent: '/',
           url: '/new/insulin-injection',
           templateUrl: '../views/insulin.form.tmpl.html'
         });
 
       /*$locationProvider.html5Mode({ enabled: true, requireBase: false });*/
-      $urlRouterProvider.otherwise('root');
+      $urlRouterProvider.otherwise('');
     }])
     .config(function($mdThemingProvider){
       $mdThemingProvider.theme('default')

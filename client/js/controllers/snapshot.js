@@ -11,7 +11,7 @@
 
       $scope.timespans = ['Most Recent', '7 days', '14 days', '30 days', '90 days'];
       $scope.carb = $scope.carb || {dailyCount: null, total: null};
-      $scope.glucose = $scope.glucose || {fastingAvg: null, current: {bloodGlucose: 150}};
+      $scope.glucose = $scope.glucose || {fastingAvg: null, current: {bloodGlucose: null}};
       $scope.insulin = $scope.insulin || {units: null, longLasting: null};
 
 
@@ -57,13 +57,31 @@
 
             $scope.glucose.current = data[0];
             $scope.glucose.prev = data[1];
-            console.info($scope.glucose.current, $scope.glucose.prev);
+            console.info(typeof($scope.glucose.current), $scope.glucose.prev);
 
 
+            var arr = _.map(data, 'bloodGlucose');
+
+            $scope.lineData = {
+              labels: ['Most Recent', 'Previous'],
+              series: []
+            };
+            $scope.lineData.series.push(arr);
+            console.info(typeof(arr));
           })
       }
-
       mostCurrent();
+
+      $scope.glucoseTests = GlucoseTest.find(
+        {
+          filter: {
+            order: 'testDateTime DESC',
+            limit: 2
+          }
+        }
+      );
+      console.info($scope.glucoseTests);
+
       function glucoseCalculations() {
         GlucoseTest
           .find({order: 'testDateTime'})
@@ -125,8 +143,6 @@
 
           });
       }
-
-
       function getInsulin() {
         InsulinInjection
           .find()
@@ -234,7 +250,7 @@
             mostCurrent();
             glucoseCalculations();
             showCustomToast();
-            $state.go('root');
+            $state.go('snapshot');
 
           })
 
@@ -283,17 +299,14 @@
         return Math.floor(Math.random() * (max - min)) + min;
       }
 
-      $scope.a = 42;
-      $scope.b = 50;
       // line chart
-      $scope.lineData = {
-        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        series: [
-          /*[0, 1, 2, 4, 7, 6, 9, 10, 8, 10, 14, 13, 16, 14, 17, 19, 20, 31, 32, 26, 36, 28, 31, 40, 26, 26, 43, 47, 55, 30],
+      /* $scope.lineData = {
+       labels: ['A', 'B'],
+       series: [ []
+       /!*[0, 1, 2, 4, 7, 6, 9, 10, 8, 10, 14, 13, 16, 14, 17, 19, 20, 31, 32, 26, 36, 28, 31, 40, 26, 26, 43, 47, 55, 30],
            [0, 1, 2, 4, 4, 6, 6, 13, 9, 10, 16, 18, 21, 16, 16, 16, 31, 17, 27, 23, 31, 29, 35, 39, 30, 32, 26, 43, 51, 46],
            [0, 1, 3, 4, 6, 5, 11, 9, 11, 11, 13, 15, 14, 22, 20, 15, 31, 27, 25, 25, 36, 30, 37, 29, 29, 39, 40, 49, 34, 35],
-           [0, 1, 3, 5, 7, 5, 9, 9, 10, 17, 13, 21, 14, 16, 23, 23, 25, 17, 24, 34, 27, 39, 33, 45, 47, 32, 40, 36, 49, 32],*/
-          [$scope.glucose.current.bloodGlucose, 24, 31, 29, $scope.a]
+       [0, 1, 3, 5, 7, 5, 9, 9, 10, 17, 13, 21, 14, 16, 23, 23, 25, 17, 24, 34, 27, 39, 33, 45, 47, 32, 40, 36, 49, 32],*!/
         ]
       },
       {
@@ -301,7 +314,7 @@
         chartPadding: {
           right: 40
         }
-      },
+       };*/
 
         $scope.lineOptions = {
           axisX: {
@@ -310,7 +323,12 @@
             }
         }
         };
+      $scope.testArray = _.valuesIn($scope.glucose.current);
+      /* _.forEach($scope.glucose.current, function(n){
+       $scope.testArray.push(n);
 
+       });*/
+      console.info($scope.glucose.current);
     }]);//EOC
 
 })();
